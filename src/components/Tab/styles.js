@@ -1,26 +1,16 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
-  
   display: flex;
-  width: 100%;
-  flex-direction: row;
-  flex: 1;
   align-items: center;
-  align-content: center;
-  position: relative;
+  justify-content: center;
   margin-top: 1em;
   margin-bottom: 1em;
   border: 1px solid #ccc;
 `;
 
-export const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: black;
-`;
-
-export const TabButton = styled.a`
+export const TabButton = styled(Link)`
   float: left;
   display: block;
   color: #000000;
