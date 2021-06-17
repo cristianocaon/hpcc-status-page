@@ -1,14 +1,3 @@
-
-
-// export default function Filter() {
-//   return (
-//     <div>
-//       <label>Select Partition</label>
-
-//     </div>
-//   );
-// }
-
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
