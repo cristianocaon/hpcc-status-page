@@ -15,6 +15,11 @@ const useStyles = makeStyles((theme) => ({
       height: theme.spacing(30),
     },
   },
+  chart: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%'
+  }
 }));
 
 export default function MainChart() {
@@ -22,15 +27,15 @@ export default function MainChart() {
 
   return (
     <div className={classes.root}>
-      <Paper elevation={1}>
+      <Paper className={classes.chart} elevation={1}>
         <label>Job Status</label>
         <PieChart />
       </Paper>
-      <Paper elevation={1}>
+      <Paper className={classes.chart} elevation={1}>
         <label>Node Status</label>
         <PieChart />
       </Paper>
-      <Paper elevation={1}>
+      <Paper className={classes.chart} elevation={1}>
         <label>Job Status</label>
         <PieChart />
       </Paper>
