@@ -1,9 +1,11 @@
-import Tab from './components/Tab/index';
+import Header from './components/Header';
+import Summary from './components/Summary';
 
 export default function App() {
   return (
-    <div className='App'>
-      <Tab />
+    <div>
+      <Header />
+      <Summary />
     </div>
   );
 };
