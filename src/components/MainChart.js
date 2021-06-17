@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     height: '100%'
+  },
+  title: {
+    display: 'flex',
+    justifyContent: 'center',
+    fontFamily: 'Roboto'
   }
 }));
 
@@ -28,15 +33,15 @@ export default function MainChart() {
   return (
     <div className={classes.root}>
       <Paper className={classes.chart} elevation={1}>
-        <label>Job Status</label>
+        <label className={classes.title}>Job Status</label>
         <PieChart />
       </Paper>
       <Paper className={classes.chart} elevation={1}>
-        <label>Node Status</label>
+        <label className={classes.title}>Node Status</label>
         <PieChart />
       </Paper>
       <Paper className={classes.chart} elevation={1}>
-        <label>Job Status</label>
+        <label className={classes.title}>Job Availability</label>
         <PieChart />
       </Paper>
     </div>
