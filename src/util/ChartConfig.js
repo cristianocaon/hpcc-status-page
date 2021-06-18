@@ -3,7 +3,6 @@ const chartConfig = (data) => {
     labels: Object.keys(data),
     datasets: [
       {
-        label: 'Status',
         backgroundColor: ['#63b0cd', '#39393a', '#c1b098', '#e9d2f4', '#9b9b93'],
         hoverBackgroundColor: [
           '#63b0cd',
@@ -12,6 +11,7 @@ const chartConfig = (data) => {
           '#e9d2f4',
           '#9b9b93'
         ],
+        hoverOffset: 4,
         data: Object.values(data)
       }
     ]
