@@ -1,10 +1,10 @@
 import { Pie } from 'react-chartjs-2';
 
-export default function PieChart(props) {
+const PieChart = ({ data }) => {
   return (
     <div style={{ position: 'block' }}>
       <Pie
-        data={props.data}
+        data={data}
         height={250}
         width={500}
         options={{
@@ -17,3 +17,5 @@ export default function PieChart(props) {
     </div>
   );
 }
+
+export default PieChart;

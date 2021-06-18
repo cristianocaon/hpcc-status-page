@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Jobs() {
+const Nodes = () => {
   const classes = useStyles();
   return (
     <div>
@@ -23,3 +23,5 @@ export default function Jobs() {
     </div>
   );
 }
+
+export default Nodes;

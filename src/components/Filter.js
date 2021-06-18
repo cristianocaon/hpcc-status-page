@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Filter() {
+const Filter = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -87,3 +87,5 @@ export default function Filter() {
     </div>
   );
 }
+
+export default Filter;

@@ -1,9 +1,11 @@
 import Dashboard from './pages/Dashboard';
 
-export default function App() {
+const App = () => {
   return (
     <div className="App">
       <Dashboard />
     </div>
   );
 };
+
+export default App;

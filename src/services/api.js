@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getJobs = (url) => {
+const getJobs = (url) => {
   axios.get(url)
     .then((response) => {
       console.log(response);
@@ -13,3 +13,5 @@ export const getJobs = (url) => {
       console.log("Ping");
     })
 }
+
+export default getJobs;

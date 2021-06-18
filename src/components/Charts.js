@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import PieChart from './PieChart';
+import jobs from '../services/jobs';
+import parseJobStatus from '../util/ParseJobStatus';
 
 // Jobs Status 
 const state = {
@@ -46,9 +48,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function MainChart() {
+const MainChart = () => {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <Paper className={classes.chart} elevation={1}>
@@ -66,3 +67,5 @@ export default function MainChart() {
     </div>
   );
 }
+
+export default MainChart;

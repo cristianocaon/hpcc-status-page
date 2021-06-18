@@ -4,7 +4,7 @@ import Jobs from '../components/Jobs'
 import Nodes from '../components/Nodes'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-export default function Dashboard() {
+const Dashboard = () => {
   return (
     <BrowserRouter>
       <Header />
@@ -16,3 +16,5 @@ export default function Dashboard() {
     </BrowserRouter>
   );
 }
+
+export default Dashboard;

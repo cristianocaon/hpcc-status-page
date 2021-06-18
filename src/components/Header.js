@@ -4,7 +4,7 @@ import Tab from '@material-ui/core/Tab'
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Header() {
+const Header = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -34,3 +34,5 @@ export default function Header() {
     </div>
   );
 };
+
+export default Header;

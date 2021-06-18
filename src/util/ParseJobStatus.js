@@ -1,9 +1,6 @@
-import { getJobs } from '../services/api';
-import jobs from '../services/jobs';
-
-export const parseJobStatus = () => {
-  const jobs = getJobs('../services/jobs');
-  console.log(jobs);
+const parseJobStatus = (jobs) => {
+  const status = jobs.jobs.forEach((job) => { job.job_state });
+  return status;
 }
 
-
+export default parseJobStatus;
