@@ -2,27 +2,14 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import PieChart from './PieChart';
-import jobs from '../services/jobs';
+import { jobs } from '../services/jobs';
 import parseJobStatus from '../util/ParseJobStatus';
+import parseUniqueCount from '../util/ParseUniqueCount';
+import chartConfig from '../util/ChartConfig.js';
 
-// Jobs Status 
-const state = {
-  labels: ['PD', 'R'],
-  datasets: [
-    {
-      label: 'Status',
-      backgroundColor: ['#63b0cd', '#39393a', '#c1b098', '#e9d2f4', '#9b9b93'],
-      hoverBackgroundColor: [
-        '#63b0cd',
-        '#39393a',
-        '#c1b098',
-        '#e9d2f4',
-        '#9b9b93'
-      ],
-      data: [65, 59]
-    }
-  ]
-}
+const statuses = parseJobStatus(jobs);
+const data = parseUniqueCount(statuses);
+const state = chartConfig(data);
 
 const useStyles = makeStyles((theme) => ({
   root: {
