@@ -1,4 +1,4 @@
-export default jobs = {
+export const jobs = {
   "meta": {
     "plugin": {
       "type": "openapi\/v0.0.36",
