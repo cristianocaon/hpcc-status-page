@@ -9,7 +9,20 @@ import chartConfig from '../util/ChartConfig.js';
 
 const statuses = parseJobStatus(jobs);
 const data = parseUniqueCount(statuses);
-const state = chartConfig(data);
+const jobStatus = chartConfig(data);
+
+const nodeStatus = chartConfig({
+  "drain": 1,
+  "resv": 33,
+  "mix": 46,
+  "idle": 10,
+  "alloc": 100
+});
+
+const jobAvail = chartConfig({
+  "up": 200,
+  "down": 0
+})
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,15 +54,15 @@ const MainChart = () => {
     <div className={classes.root}>
       <Paper className={classes.chart} elevation={1}>
         <label className={classes.title}>Job Status</label>
-        <PieChart data={state} />
+        <PieChart data={jobStatus} />
       </Paper>
       <Paper className={classes.chart} elevation={1}>
         <label className={classes.title}>Node Status</label>
-        <PieChart data={state} />
+        <PieChart data={nodeStatus} />
       </Paper>
       <Paper className={classes.chart} elevation={1}>
         <label className={classes.title}>Job Availability</label>
-        <PieChart data={state} />
+        <PieChart data={jobAvail} />
       </Paper>
     </div>
   );
