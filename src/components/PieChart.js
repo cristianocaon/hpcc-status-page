@@ -8,10 +8,11 @@ const PieChart = ({ data }) => {
         height={250}
         width={500}
         options={{
+          responsive: true,
           legend: {
             display: true,
           },
-          maintainAspectRatio: false
+          maintainAspectRatio: false,
         }}
       />
     </div>
