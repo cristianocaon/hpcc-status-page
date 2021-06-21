@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Filter = () => {
+const Filter = ({ onClick }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -73,10 +73,10 @@ const Filter = () => {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    <MenuItem onClick={handleClose}>Nocona</MenuItem>
-                    <MenuItem onClick={handleClose}>Quanah</MenuItem>
-                    <MenuItem onClick={handleClose}>Matador</MenuItem>
-                    <MenuItem onClick={handleClose}>Toreador</MenuItem>
+                    <MenuItem value="Nocona" onClick={onClick}>Nocona</MenuItem>
+                    <MenuItem value="Quanah" onClick={onClick}>Quanah</MenuItem>
+                    <MenuItem value="Matador" onClick={onClick}>Matador</MenuItem>
+                    <MenuItem value="Toreador" onClick={onClick}>Toreador</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

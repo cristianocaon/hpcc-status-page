@@ -42,13 +42,16 @@ const columns = [
 const Jobs = () => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <DataGrid
-        rows={data}
-        columns={columns}
-        pageSize={5}
-        autoHeight={true}
-      />
+    <div>
+      <h1 className={classes.title}>Jobs Information</h1>
+      <div className={classes.root}>
+        <DataGrid
+          rows={data}
+          columns={columns}
+          pageSize={5}
+          autoHeight={true}
+        />
+      </div>
     </div>
   );
 }

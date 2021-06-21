@@ -7,10 +7,6 @@ import parseJobStatus from '../util/ParseJobStatus';
 import parseUniqueCount from '../util/ParseUniqueCount';
 import chartConfig from '../util/ChartConfig.js';
 
-const statuses = parseJobStatus(jobs);
-const data = parseUniqueCount(statuses);
-const jobStatus = chartConfig(data);
-
 const nodeStatus = chartConfig({
   "drain": 1,
   "resv": 33,
@@ -48,24 +44,43 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const MainChart = () => {
+let jobStatus;
+
+const Charts = ({ isDisplayed, partition }) => {
   const classes = useStyles();
-  return (
-    <div className={classes.root}>
-      <Paper className={classes.chart} elevation={1}>
-        <label className={classes.title}>Job Status</label>
-        <PieChart data={jobStatus} />
-      </Paper>
-      <Paper className={classes.chart} elevation={1}>
-        <label className={classes.title}>Node Status</label>
-        <PieChart data={nodeStatus} />
-      </Paper>
-      <Paper className={classes.chart} elevation={1}>
-        <label className={classes.title}>Job Availability</label>
-        <PieChart data={jobAvail} />
-      </Paper>
-    </div>
-  );
+
+  if (partition !== null) {
+    const statuses = parseJobStatus(jobs, partition);
+    // console.log(statuses);
+    const data = parseUniqueCount(statuses);
+    jobStatus = chartConfig(data);
+  } else {
+    console.log("here")
+    const statuses = parseJobStatus(jobs, "");
+    const data = parseUniqueCount(statuses);
+    jobStatus = chartConfig(data);
+  }
+
+  if (isDisplayed) {
+    return (
+      <div className={classes.root}>
+        <Paper className={classes.chart} elevation={1}>
+          <label className={classes.title}>Job Status</label>
+          <PieChart data={jobStatus} />
+        </Paper>
+        <Paper className={classes.chart} elevation={1}>
+          <label className={classes.title}>Node Status</label>
+          <PieChart data={nodeStatus} />
+        </Paper>
+        <Paper className={classes.chart} elevation={1}>
+          <label className={classes.title}>Job Availability</label>
+          <PieChart data={jobAvail} />
+        </Paper>
+      </div>
+    );
+  } else {
+    return null;
+  }
 }
 
-export default MainChart;
+export default Charts;
