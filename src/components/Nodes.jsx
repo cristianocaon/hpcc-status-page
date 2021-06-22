@@ -1,5 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles'
 
+import NodeTable from './NodeTable';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -20,6 +22,7 @@ const Nodes = () => {
   return (
     <div>
       <h1 className={classes.title}>Nodes Information</h1>
+      <NodeTable />
     </div>
   );
 }
