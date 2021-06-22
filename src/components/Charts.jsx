@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import PieChart from './PieChart';
-import { jobs } from '../services/jobs';
+import { jobs } from '../data/jobs';
 import parseJobStatus from '../util/ParseJobStatus';
 import parseUniqueCount from '../util/ParseUniqueCount';
 import chartConfig from '../util/ChartConfig.js';

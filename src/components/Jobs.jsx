@@ -2,7 +2,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { DataGrid } from '@material-ui/data-grid';
-import { jobs } from '../services/jobs';
+import { jobs } from '../data/jobs';
 
 const data = jobs.jobs.slice(0, 20).map((job) => (
   {
