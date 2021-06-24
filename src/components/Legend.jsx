@@ -8,9 +8,6 @@ const useStyles = makeStyles(() => ({
     margin: '2em',
     alignContent: 'center'
   },
-  paper: {
-    // padding: '0.5em'
-  },
   div: {
     display: 'flex',
     justifyContent: 'center',
@@ -31,7 +28,7 @@ const Legend = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Paper className={classes.paper}>
+      <Paper>
         <div className={classes.div}>
           <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#4E6E5D' }}></span> Allocated </span>
           <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#F09D51' }}></span> Idle </span>
