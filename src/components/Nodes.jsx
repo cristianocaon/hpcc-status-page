@@ -1,10 +1,10 @@
-import { makeStyles } from '@material-ui/core/styles'
-
 import NodeTable from './NodeTable';
-
 import Legend from './Legend';
 
-const useStyles = makeStyles((theme) => ({
+import { makeStyles } from '@material-ui/core/styles'
+
+
+const useStyles = makeStyles(_ => ({
   root: {
     display: 'flex',
     justifyContent: 'center',

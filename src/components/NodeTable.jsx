@@ -35,43 +35,54 @@ const NodeTable = () => {
     return rows;
   }
 
-  const nodeRowsArr = sliceArray(nodeStatus.reverse());
+  const splitRack = data => {
+    let racks = [];
+    let rack = [];
+    let count = 2;
+    for (let i = 0; i < data.length; i++) {
+      if (parseInt(data[i].node.charAt(0)) === count) {
+        rack.push(data[i]);
+      } else {
+        racks.push(rack);
+        rack = [];
+        count--;
+        rack.push(data[i])
+      }
+    }
+    racks.push(rack);
+    return racks;
+  }
 
-  const nodeRows = nodeRowsArr.map(arr => {
-    return (
-      <tr>
-        {arr.map(obj => <NodeCell state={obj.state} >{obj.node}</NodeCell>)}
-      </tr>
-    )
-  })
+  const racks = splitRack(nodeStatus.reverse());
+
+  const splitRackRows = racks => {
+    const rackRows = racks.map(rack => {
+      const rows = sliceArray(rack);
+      return rows;
+    })
+    return rackRows;
+  }
+
+  const rackRows = splitRackRows(racks);
 
   return (
     <Paper className={classes.root}>
-      <table className={classes.table}>
-        <tbody>
-          {nodeRows}
-        </tbody>
-      </table>
-      <table className={classes.table}>
-        <tbody>
-          {nodeRows}
-        </tbody>
-      </table>
-      <table className={classes.table}>
-        <tbody>
-          {nodeRows}
-        </tbody>
-      </table>
-      <table className={classes.table}>
-        <tbody>
-          {nodeRows}
-        </tbody>
-      </table>
-      <table className={classes.table}>
-        <tbody>
-          {nodeRows}
-        </tbody>
-      </table>
+      {rackRows.map(rack => {
+        const nodeRows = rack.map(arr => {
+          return (
+            <tr>
+              {arr.map(obj => <NodeCell state={obj.state} >{obj.node}</NodeCell>)}
+            </tr>
+          )
+        });
+        return (
+          <table className={classes.table}>
+            <tbody>
+              {nodeRows}
+            </tbody>
+          </table>
+        )
+      })}
     </Paper>
   )
 }
