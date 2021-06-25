@@ -23,18 +23,9 @@ const NodeCell = (props) => {
     else return '#F00'
   }
 
-  const color = { backgroundColor: generateStateColor(props.state) };
+  const styleProps = { backgroundColor: generateStateColor(props.state) };
 
-  const classes = useStyles(color);
-
-  // const cellStyle = {
-  //   backgroundColor: color,
-  //   color: '#fff',
-  //   fontFamily: 'Roboto',
-  //   fontSize: '0.7rem',
-  //   padding: '0.6em',
-  //   border: '10px solid black'
-  // }
+  const classes = useStyles(styleProps);
 
   return (
     <td className={classes.cell}>
