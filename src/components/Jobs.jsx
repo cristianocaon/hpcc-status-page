@@ -7,10 +7,15 @@ const data = jobs.jobs.slice(0, 20).map((job) => (
   {
     id: job.job_id,
     partition: job.partition,
+    state: job.job_state,
     user: job.user_name,
     name: job.name,
-    state: job.job_state,
-    qos: job.qos
+    priority: jobs.priority,
+    submitdate: "date",
+    submittime: jobs.submit_time,
+    node_count: job.node_count,
+    cpus: job.cpus,
+    qos: job.qos,
   }
 ));
 
@@ -30,12 +35,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const columns = [
-  { field: 'id', headerName: 'Job ID', width: 200 },
-  { field: 'partition', headerName: 'Partition', width: 200 },
-  { field: 'user', headerName: 'User', width: 200 },
-  { field: 'name', headerName: 'Name', width: 200 },
-  { field: 'state', headerName: 'State', width: 200 },
-  { field: 'qos', headerName: 'QOS', width: 200 },
+  { field: 'id', headerName: 'Job ID', width: 120 },
+  { field: 'partition', headerName: 'Partition', width: 140 },
+  { field: 'state', headerName: 'State', width: 120 },
+  { field: 'user', headerName: 'User', width: 120 },
+  { field: 'name', headerName: 'Name', width: 120 },
+  { field: 'priority', headerName: 'Priority', width: 140 },
+  { field: 'submitdate', headerName: 'S. Date', width: 140 },
+  { field: 'submittime', headerName: 'S. Time', width: 140 },
+  { field: 'node_count', headerName: 'Nodes', width: 120 },
+  { field: 'cpus', headerName: 'CPUs', width: 120 },
+  { field: 'qos', headerName: 'QOS', width: 120 },
 ];
 
 const Jobs = () => {
