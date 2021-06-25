@@ -1,3 +1,16 @@
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  cell: props => ({
+    backgroundColor: props.backgroundColor,
+    color: '#fff',
+    fontFamily: 'Roboto',
+    fontSize: '0.7rem',
+    padding: '0.6em',
+    border: '10px solid black'
+  })
+})
+
 const NodeCell = (props) => {
   const generateStateColor = (state) => {
     if (state === 'allocated') return '#4E6E5D';
@@ -10,17 +23,21 @@ const NodeCell = (props) => {
     else return '#F00'
   }
 
-  const color = generateStateColor(props.state);
+  const color = { backgroundColor: generateStateColor(props.state) };
 
-  const cellStyle = {
-    backgroundColor: color,
-    color: '#fff',
-    fontFamily: 'Roboto',
-    padding: '0.65em'
-  }
+  const classes = useStyles(color);
+
+  // const cellStyle = {
+  //   backgroundColor: color,
+  //   color: '#fff',
+  //   fontFamily: 'Roboto',
+  //   fontSize: '0.7rem',
+  //   padding: '0.6em',
+  //   border: '10px solid black'
+  // }
 
   return (
-    <td style={cellStyle}>
+    <td className={classes.cell}>
       {props.children}
     </td>
   )
