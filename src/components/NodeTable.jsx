@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   table: {
-    border: '3px solid',
-    borderCollapse: 'collapse',
+    border: '3px solid #4c514f',
+    borderCollapse: 'separate',
     margin: '5px',
     marginTop: '25px',
     marginBottom: '25px',

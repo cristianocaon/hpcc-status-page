@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     fontFamily: 'Roboto',
     fontSize: '0.7rem',
     padding: '0.6em',
-    border: '10px solid black'
+    border: '0.5px solid #3d403f'
   })
 })
 
@@ -20,7 +20,7 @@ const NodeCell = (props) => {
     else if (state === 'down') return '#9B7EDE';
     else if (state === 'resv') return '#861657';
     else if (state === 'mix') return '#0B132B';
-    else return '#F00'
+    else return '#b9b7bd'
   }
 
   const styleProps = { backgroundColor: generateStateColor(props.state) };
