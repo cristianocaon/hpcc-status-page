@@ -6,6 +6,8 @@ const useStyles = makeStyles(() => ({
     border: '3px solid',
     borderCollapse: 'collapse',
     margin: '5px',
+    marginTop: '25px',
+    marginBottom: '25px',
     tableLayout: 'fixed'
   }
 }));
