@@ -81,9 +81,11 @@ const NodeCell = (props) => {
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <Typography>I use Popover.</Typography>
+        <>
+          {Object.keys(props.info).map(field => <Typography>{field}: {props.info[field]}</Typography>)}
+        </>
       </Popover>
-    </td>
+    </td >
   )
 }
 
