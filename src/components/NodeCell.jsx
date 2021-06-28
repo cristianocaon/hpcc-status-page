@@ -1,7 +1,12 @@
-import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Popover from '@material-ui/core/Popover';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper'
 import Typography from '@material-ui/core/Typography';
+import {
+  usePopupState,
+  bindHover,
+  bindPopper,
+} from 'material-ui-popup-state/hooks'
 
 const useStyles = makeStyles({
   cell: props => ({
@@ -12,9 +17,6 @@ const useStyles = makeStyles({
     padding: '1em',
     border: '0.5px solid #3d403f'
   }),
-  popover: {
-    pointerEvents: 'none',
-  },
   paper: {
     padding: '10px',
   },
@@ -37,54 +39,22 @@ const NodeCell = (props) => {
 
   const styleProps = { backgroundColor: generateStateColor(props.state) };
   const classes = useStyles(styleProps);
-  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handlePopoverOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
+  const popupState = usePopupState({
+    variant: 'popper',
+    popupId: 'demoPopper',
+  })
 
   return (
-    <td
-      className={classes.cell}
-    >
-      <Typography
-        aria-owns={open ? 'mouse-over-popover' : undefined}
-        aria-haspopup="true"
-        className={classes.text}
-        onMouseEnter={handlePopoverOpen}
-        onMouseLeave={handlePopoverClose}
-      >
-        {props.children}
-      </Typography>
-      <Popover
-        id="mouse-over-popover"
-        className={classes.popover}
-        classes={{
-          paper: classes.paper,
-        }}
-        open={open}
-        anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        onClose={handlePopoverClose}
-        disableRestoreFocus
-      >
-        <>
-          {Object.keys(props.info).map(field => <Typography>{field}: {props.info[field]}</Typography>)}
-        </>
-      </Popover>
+    <td className={classes.cell} {...bindHover(popupState)}>
+      <Typography className={classes.text}>{props.children}</Typography>
+      <Popper {...bindPopper(popupState)} transition>
+        <Paper className={classes.paper}>
+          <Typography>
+            {Object.keys(props.info).map(field => <Typography><strong>{field}</strong>: {props.info[field]}</Typography>)}
+          </Typography>
+        </Paper>
+      </Popper>
     </td >
   )
 }
