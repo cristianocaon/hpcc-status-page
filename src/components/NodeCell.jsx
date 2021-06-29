@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import {
   usePopupState,
   bindHover,
+  bindToggle,
   bindPopper,
 } from 'material-ui-popup-state/hooks'
 
@@ -19,6 +20,7 @@ const useStyles = makeStyles({
     '&:hover': {
       opacity: '0.5',
       transition: 'opacity .4s ease-out',
+      cursor: 'pointer',
     }
   }),
   paper: {
@@ -50,7 +52,11 @@ const NodeCell = (props) => {
   })
 
   return (
-    <td className={classes.cell} {...bindHover(popupState)}>
+    <td className={classes.cell} {...bindToggle(popupState)} onMouseLeave={_ => {
+      if (popupState.isOpen) {
+        popupState.close();
+      }
+    }}>
       <Typography className={classes.text}>{props.children}</Typography>
       <Popper {...bindPopper(popupState)} transition>
         <Paper className={classes.paper}>
