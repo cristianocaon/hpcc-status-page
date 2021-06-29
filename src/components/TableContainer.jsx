@@ -95,14 +95,14 @@ const TableContainer = () => {
   const rackRows = splitRackRows(racks);
 
   return (
-    <Paper className={classes.root}>
+    <Paper className={classes.root} elevation={1}>
       <div className={classes.tables}>
         {rackRows.map(rack => {
           return <NodeTable rack={rack} number={rackNumber--} />
         })}
       </div>
       <div className={classes.pagination}>
-        <Pagination count={10} page={page} onChange={handleChange} variant="outlined" color="primary" />
+        <Pagination count={7} page={page} onChange={handleChange} variant="outlined" color="primary" />
       </div>
     </Paper>
   )

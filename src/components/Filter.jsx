@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
-    margin: '2em'
+    margin: '0.5em'
   },
   paper: {
     marginRight: theme.spacing(2),

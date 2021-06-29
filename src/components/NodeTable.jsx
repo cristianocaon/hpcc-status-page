@@ -12,6 +12,9 @@ const useStyles = makeStyles(() => ({
     borderCollapse: 'separate',
     margin: '5px',
     tableLayout: 'fixed'
+  },
+  title: {
+    paddingBottom: '0',
   }
 }));
 
@@ -34,7 +37,7 @@ const NodeTable = ({ rack, number }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <label><em>Rack {number}</em></label>
+      <label className={classes.title}><em>Rack {number}</em></label>
       <table className={classes.table}>
         <tbody>
           {rack.map(arr => {

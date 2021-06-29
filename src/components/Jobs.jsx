@@ -26,11 +26,6 @@ const useStyles = makeStyles((theme) => ({
     margin: '2em',
     marginTop: '1em',
     marginBottom: '1em'
-  },
-  title: {
-    display: 'flex',
-    justifyContent: 'center',
-    fontFamily: 'Roboto'
   }
 }));
 
@@ -52,12 +47,11 @@ const Jobs = () => {
   const classes = useStyles();
   return (
     <div>
-      <h1 className={classes.title}>Jobs Information</h1>
       <div className={classes.root}>
         <DataGrid
           rows={data}
           columns={columns}
-          pageSize={5}
+          pageSize={6}
           autoHeight={true}
         />
       </div>

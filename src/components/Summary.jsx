@@ -10,11 +10,6 @@ const useStyles = makeStyles(() => ({
     margin: '2em',
     marginTop: '1em',
     marginBottom: '1em'
-  },
-  title: {
-    display: 'flex',
-    justifyContent: 'center',
-    fontFamily: 'Roboto'
   }
 }));
 
@@ -29,14 +24,9 @@ export default function Summary() {
     setIsDisplayed(true);
   }
 
-  // const togglePartitionSummary = () => {
-  //   if (partition !== "");
-  // }
-
   return (
     <div>
       <div>
-        <h1 className={classes.title}>Overview</h1>
         <Filter onClick={handlePartitionSelection} />
         <Charts isDisplayed={true} partition={""} />
       </div>
