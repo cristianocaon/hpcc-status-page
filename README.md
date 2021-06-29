@@ -2,7 +2,7 @@
 
 ## Description
 
-Frontend implementation portion of the  of the Slurm Status Page for the HPCC at Texas Tech University. 
+Frontend implementation portion of the  of the Slurm Status Page for the HPCC (High Performance Computing Center) at Texas Tech University. 
 
 ## Objective
 To provide better monitoring and visualization capabilities through graphs and tables to replace old CLI system for users.
