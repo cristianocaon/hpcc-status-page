@@ -32,7 +32,6 @@ const nodeInfo = {
 
 const NodeTable = ({ rack, number }) => {
   const classes = useStyles();
-  console.log(rack);
   return (
     <div className={classes.root}>
       <label><em>Rack {number}</em></label>
