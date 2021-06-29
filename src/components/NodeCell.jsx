@@ -15,7 +15,11 @@ const useStyles = makeStyles({
     fontFamily: 'Roboto',
     fontSize: '0.4rem',
     padding: '1em',
-    border: '0.5px solid #3d403f'
+    border: '0.5px solid #3d403f',
+    '&:hover': {
+      opacity: '0.5',
+      transition: 'opacity .4s ease-out',
+    }
   }),
   paper: {
     padding: '10px',
