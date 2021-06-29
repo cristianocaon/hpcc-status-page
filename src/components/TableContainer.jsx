@@ -80,9 +80,9 @@ const TableContainer = () => {
     return rows;
   }
 
-  console.log(nodeStatus.reverse())
+  const racks = splitRack(nodeStatus.reverse());
 
-  const racks = splitRack(nodeStatus);
+  let rackNumber = nodeStatus[0].node.split("-")[1];
 
   const splitRackRows = racks => {
     const rackRows = racks.map(rack => {
@@ -98,7 +98,7 @@ const TableContainer = () => {
     <Paper className={classes.root}>
       <div className={classes.tables}>
         {rackRows.map(rack => {
-          return <NodeTable rack={rack} />
+          return <NodeTable rack={rack} number={rackNumber--} />
         })}
       </div>
       <div className={classes.pagination}>

@@ -2,12 +2,15 @@ import NodeCell from './NodeCell';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   table: {
     border: '3px solid #4c514f',
     borderCollapse: 'separate',
     margin: '5px',
-    marginTop: '25px',
-    marginBottom: '25px',
     tableLayout: 'fixed'
   }
 }));
@@ -27,10 +30,12 @@ const nodeInfo = {
   cputotal: '0',
 }
 
-const NodeTable = ({ rack }) => {
+const NodeTable = ({ rack, number }) => {
   const classes = useStyles();
+  console.log(rack);
   return (
-    <div>
+    <div className={classes.root}>
+      <label><em>Rack {number}</em></label>
       <table className={classes.table}>
         <tbody>
           {rack.map(arr => {
