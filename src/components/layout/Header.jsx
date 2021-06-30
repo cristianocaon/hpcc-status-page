@@ -25,13 +25,10 @@ function a11yProps(index) {
 
 const Header = () => {
   const classes = useStyles();
-
   const [value, setValue] = useState(0);
-
   const handleChange = (event, value) => {
     setValue(value);
   }
-
   return (
     <div className={classes.root}>
       <Paper elevation={1}>
