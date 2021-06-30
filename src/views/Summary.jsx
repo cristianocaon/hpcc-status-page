@@ -32,11 +32,11 @@ export default function Summary() {
     <div>
       <div>
         <Filter onClick={handlePartitionSelection} />
-        <Charts isDisplayed={true} partition={""} />
+        <Charts isDisplayed={true} partition={"total"} />
       </div>
       <div>
         <h2 className={classes.title}>{partition}</h2>
-        <Charts isDisplayed={isDisplayed} partition={partition} />
+        <Charts isDisplayed={isDisplayed} partition={partition.toLowerCase()} />
       </div>
     </div>
   );
