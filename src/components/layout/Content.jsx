@@ -1,6 +1,6 @@
-import Summary from './Summary';
-import Jobs from './Jobs';
-import Nodes from './Nodes';
+import Summary from '../../views/Summary';
+import Jobs from '../../views/Jobs';
+import Nodes from '../../views/Nodes';
 import { Switch, Route } from 'react-router-dom';
 
 const Content = () => {

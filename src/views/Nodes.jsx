@@ -1,6 +1,6 @@
 // import NodeTable from './NodeTable';
-import Legend from './Legend';
-import TableContainer from './TableContainer';
+import Legend from '../components/Legend';
+import TableContainer from '../components/TableContainer';
 
 const Nodes = () => {
   return (

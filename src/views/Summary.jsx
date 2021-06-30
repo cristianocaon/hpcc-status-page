@@ -1,6 +1,6 @@
 import React from 'react';
-import Filter from './Filter'
-import Charts from './Charts';
+import Filter from '../components/Filter'
+import Charts from '../components/Charts';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
