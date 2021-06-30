@@ -4,7 +4,6 @@ import Popper from '@material-ui/core/Popper'
 import Typography from '@material-ui/core/Typography';
 import {
   usePopupState,
-  bindHover,
   bindToggle,
   bindPopper,
 } from 'material-ui-popup-state/hooks'

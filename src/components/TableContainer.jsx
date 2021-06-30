@@ -46,7 +46,7 @@ const TableContainer = () => {
     let count = parseInt(data[0].node.split("-")[1]);
     for (let i = 0; i < data.length; i++) {
 
-      let [type, rackNum, nodeNum] = data[i].node.split("-");
+      let [, rackNum, nodeNum] = data[i].node.split("-");
 
       if (parseInt(rackNum) < count) {
         racks.push(rack);
