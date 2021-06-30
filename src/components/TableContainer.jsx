@@ -61,7 +61,7 @@ const TableContainer = () => {
         const check = 60 - parseInt(nodeNum);
         if (check > 0) {
           for (let j = 0; j < check; j++) {
-            rack.push({ node: '---------', state: 'other' });
+            rack.push({ node: '---------', state: 'empty' });
           }
         }
         isFirst = false;

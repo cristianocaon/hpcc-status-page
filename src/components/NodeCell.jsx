@@ -40,7 +40,8 @@ const NodeCell = (props) => {
     else if (state === 'down') return '#9B7EDE';
     else if (state === 'resv') return '#861657';
     else if (state === 'mix') return '#0B132B';
-    else return '#b9b7bd'
+    else if (state === 'empty') return '#b9b7bd';
+    else return '#313628';
   }
 
   const styleProps = { backgroundColor: generateStateColor(props.state) };

@@ -37,7 +37,8 @@ const Legend = () => {
           <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#9B7EDE' }}></span> Down </span>
           <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#861657' }}></span> Reserved </span>
           <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#0B132B' }}></span> Mix</span>
-          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#b9b7bd' }}></span> Other</span>
+          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#b9b7bd' }}></span> Empty</span>
+          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#313628' }}></span> Other</span>
         </div>
       </Paper>
     </div>
