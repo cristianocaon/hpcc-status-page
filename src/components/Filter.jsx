@@ -9,7 +9,7 @@ import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Change later for partition field filtering
-import getSummary from '../data/getSummary';
+import requestSummary from '../data/requestSummary';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +27,7 @@ const Filter = ({ onClick }) => {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
 
-  const partitions = Object.keys(getSummary()).filter(key => {
+  const partitions = Object.keys(requestSummary()).filter(key => {
     return key !== 'error' && key !== 'total'
   });
 

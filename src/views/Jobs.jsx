@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { DataGrid } from '@material-ui/data-grid';
 import { jobs } from '../data/jobs';
+import requestJobs from '../data/requestJobs';
 
 const data = jobs.jobs.slice(0, 20).map((job) => (
   {
@@ -45,6 +46,15 @@ const columns = [
 
 const Jobs = () => {
   const classes = useStyles();
+
+  let columns2 = undefined;
+  const jobs = requestJobs();
+  if (jobs.errors === "") {
+    columns2 = Object.keys(jobs.jobs[0]).filter(job => {
+      return job !== 'nodelist';
+    });
+  }
+
   return (
     <div>
       <div className={classes.root}>

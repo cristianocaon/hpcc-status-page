@@ -2,7 +2,7 @@ import PieChart from './PieChart';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 
-import getSummary from '../data/getSummary';
+import requestSummary from '../data/requestSummary';
 import chartConfig from '../util/chartConfig';
 import parseSummaryData from '../util/parseSummaryData';
 
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 const Charts = ({ isDisplayed, partition }) => {
   const classes = useStyles();
 
-  const summary = getSummary();
+  const summary = requestSummary();
   let jobSummaryConfig = undefined;
   let nodeSummaryConfig = undefined;
   let usageSummaryConfig = undefined;
