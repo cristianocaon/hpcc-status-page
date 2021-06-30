@@ -10,6 +10,10 @@ const useStyles = makeStyles(() => ({
     margin: '2em',
     marginTop: '1em',
     marginBottom: '1em'
+  },
+  title: {
+    display: 'flex',
+    justifyContent: 'center',
   }
 }));
 
@@ -31,7 +35,7 @@ export default function Summary() {
         <Charts isDisplayed={true} partition={""} />
       </div>
       <div>
-        <h1 className={classes.title}>{partition}</h1>
+        <h2 className={classes.title}>{partition}</h2>
         <Charts isDisplayed={isDisplayed} partition={partition} />
       </div>
     </div>
