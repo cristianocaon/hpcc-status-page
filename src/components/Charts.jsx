@@ -51,7 +51,6 @@ const Charts = ({ isDisplayed, partition }) => {
 
   if (partition !== null) {
     const statuses = parseJobStatus(jobs, partition);
-    // console.log(statuses);
     const data = parseUniqueCount(statuses);
     jobStatus = chartConfig(data);
   } else {
