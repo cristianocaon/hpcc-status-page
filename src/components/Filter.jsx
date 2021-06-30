@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
@@ -7,6 +7,9 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
+
+// Change later for partition field filtering
+import getSummary from '../data/getSummary';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,8 +24,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Filter = ({ onClick }) => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
+
+  const partitions = Object.keys(getSummary()).filter(key => {
+    return key !== 'error' && key !== 'total'
+  });
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -43,9 +50,8 @@ const Filter = ({ onClick }) => {
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
+  const prevOpen = useRef(open);
+  useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
@@ -73,10 +79,11 @@ const Filter = ({ onClick }) => {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    <MenuItem value="Nocona" onClick={onClick}>Nocona</MenuItem>
-                    <MenuItem value="Quanah" onClick={onClick}>Quanah</MenuItem>
-                    <MenuItem value="Matador" onClick={onClick}>Matador</MenuItem>
-                    <MenuItem value="Toreador" onClick={onClick}>Toreador</MenuItem>
+                    {partitions.map(partition => {
+                      return (
+                        <MenuItem value={partition} onClick={onClick}>{partition.charAt(0).toUpperCase() + partition.slice(1)}</MenuItem>
+                      )
+                    })}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
@@ -84,7 +91,7 @@ const Filter = ({ onClick }) => {
           )}
         </Popper>
       </div>
-    </div>
+    </div >
   );
 }
 
