@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from "react-router-dom";
 
 import Paper from '@material-ui/core/Paper'
@@ -16,28 +16,30 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
 const Header = () => {
   const classes = useStyles();
 
-  const [selectedTab, setSelectedTab] = React.useState("summary");
+  const [value, setValue] = useState(0);
 
-  const handleTabClick = (event, value) => {
-    setSelectedTab(value);
+  const handleChange = (event, value) => {
+    setValue(value);
   }
 
   return (
     <div className={classes.root}>
       <Paper elevation={1}>
-        <Tabs value={selectedTab} onChange={handleTabClick} centered>
-          <Link to="/" value="summary">
-            <Tab label="Summary" />
-          </Link>
-          <Link to="/jobs" value="jobs">
-            <Tab label="Jobs" />
-          </Link>
-          <Link to="/nodes" value="nodes">
-            <Tab label="Nodes" />
-          </Link>
+        <Tabs value={value} onChange={handleChange} indicatorColor="primary"
+          textColor="primary" centered>
+          <Tab label="Summary" {...a11yProps(0)} component={Link} to="/" />
+          <Tab label="Jobs" {...a11yProps(1)} component={Link} to="/jobs" />
+          <Tab label="Nodes" {...a11yProps(2)} component={Link} to="/nodes" />
         </Tabs>
       </Paper>
     </div>
