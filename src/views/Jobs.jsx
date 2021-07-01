@@ -63,6 +63,7 @@ const Jobs = () => {
           columns={columns}
           pageSize={6}
           autoHeight={true}
+          disableColumnMenu={true}
         />
       </div>
     </div>
