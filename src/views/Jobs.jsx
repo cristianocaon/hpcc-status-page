@@ -1,26 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { DataGrid } from '@material-ui/data-grid';
-import { jobs } from '../data/jobs';
 import requestJobs from '../data/requestJobs';
 
-const data = jobs.jobs.slice(0, 20).map((job) => (
-  {
-    id: job.job_id,
-    partition: job.partition,
-    state: job.job_state,
-    user: job.user_name,
-    name: job.name,
-    priority: jobs.priority,
-    submitdate: "date",
-    submittime: jobs.submit_time,
-    node_count: job.node_count,
-    cpus: job.cpus,
-    qos: job.qos,
-  }
-));
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(_ => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
@@ -30,38 +13,50 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const columns = [
-  { field: 'id', headerName: 'Job ID', width: 120 },
-  { field: 'partition', headerName: 'Partition', width: 140 },
-  { field: 'state', headerName: 'State', width: 120 },
-  { field: 'user', headerName: 'User', width: 120 },
-  { field: 'name', headerName: 'Name', width: 120 },
-  { field: 'priority', headerName: 'Priority', width: 140 },
-  { field: 'submitdate', headerName: 'S. Date', width: 140 },
-  { field: 'submittime', headerName: 'S. Time', width: 140 },
-  { field: 'node_count', headerName: 'Nodes', width: 120 },
-  { field: 'cpus', headerName: 'CPUs', width: 120 },
-  { field: 'qos', headerName: 'QOS', width: 120 },
-];
-
 const Jobs = () => {
   const classes = useStyles();
 
-  let columns2 = undefined;
   const jobs = requestJobs();
+  let fields = undefined;
+  let data2 = undefined;
+
   if (jobs.errors === "") {
-    columns2 = Object.keys(jobs.jobs[0]).filter(job => {
+    fields = Object.keys(jobs.jobs[0]).filter(job => {
       return job !== 'nodelist';
+    }).map(column => {
+      let header = column.toUpperCase();
+      let width = column.length < 6 ? 110 : column.length < 7 ? 120 : column.length < 9 ? 140 : 150;
+      if (column === 'jobid') {
+        column = 'id';
+        header = 'JOBID';
+      }
+      return ({
+        field: column,
+        headerName: header,
+        width: width,
+      });
     });
+
+    data2 = jobs.jobs.map(obj => {
+      let { jobid, ...data } = obj;
+      data["id"] = jobid;
+      return data;
+    });
+
+    console.log(fields);
+    console.log(data2);
+  } else {
+    // Change this to display on interface
+    console.log(jobs.errors);
   }
 
   return (
     <div>
       <div className={classes.root}>
         <DataGrid
-          rows={data}
-          columns={columns}
-          pageSize={6}
+          rows={data2}
+          columns={fields}
+          pageSize={8}
           autoHeight={true}
           disableColumnMenu={true}
         />
