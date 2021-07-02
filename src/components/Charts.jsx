@@ -44,6 +44,9 @@ const Charts = ({ isDisplayed, partition }) => {
     jobSummaryConfig = chartConfig(jobLabels, jobValues);
     const [nodeLabels, nodeValues] = parseSummaryData(summary[partition].nodes)
     nodeSummaryConfig = chartConfig(nodeLabels, nodeValues);
+  } else {
+    // Change this to display on interface
+    console.log(summary.error);
   }
 
   if (isDisplayed) {
