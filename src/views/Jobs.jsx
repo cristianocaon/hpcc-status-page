@@ -1,20 +1,46 @@
-import React from 'react';
+import { useState } from 'react';
+import Filter from '../components/Filter';
+import requestJobs from '../data/requestJobs';
 import { makeStyles } from '@material-ui/core/styles';
 import { DataGrid } from '@material-ui/data-grid';
-import requestJobs from '../data/requestJobs';
 
-const useStyles = makeStyles(_ => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
     margin: '2em',
     marginTop: '1em',
     marginBottom: '1em'
-  }
+  },
+  filterContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    margin: '10px',
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
 }));
 
 const Jobs = () => {
   const classes = useStyles();
+
+  const [partition, setPartition] = useState("");
+  const [status, setStatus] = useState("");
+
+  const handlePartitionSelection = (event) => {
+    setPartition(event.target.innerText);
+  }
+
+  const handleStatusSelection = (event) => {
+    setStatus(event.target.innerText);
+  }
 
   const jobs = requestJobs();
   let fields = undefined;
@@ -42,9 +68,6 @@ const Jobs = () => {
       data["id"] = jobid;
       return data;
     });
-
-    console.log(fields);
-    console.log(data2);
   } else {
     // Change this to display on interface
     console.log(jobs.errors);
@@ -53,6 +76,10 @@ const Jobs = () => {
   return (
     <div>
       <div className={classes.root}>
+        <div className={classes.filterContainer}>
+          <Filter category="partition" onClick={handlePartitionSelection} />
+          <Filter category="status" onClick={handlePartitionSelection} />
+        </div>
         <DataGrid
           rows={data2}
           columns={fields}
