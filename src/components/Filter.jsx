@@ -1,98 +1,62 @@
-import { useState, useRef, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
+import { useState } from 'react';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Change later for partition field filtering
 import requestSummary from '../data/requestSummary';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    margin: '0.5em'
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
   },
-  paper: {
-    marginRight: theme.spacing(2),
+  selectEmpty: {
+    marginTop: theme.spacing(2),
   },
 }));
 
-const Filter = ({ onClick }) => {
+const Filter = ({ category, onClick }) => {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const anchorRef = useRef(null);
+  const [item, setItem] = useState('');
 
-  const partitions = Object.keys(requestSummary()).filter(key => {
-    return key !== 'error' && key !== 'total'
-  });
-
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
+  const handleChange = (event) => {
+    setItem(event.target.value);
   };
 
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  function handleListKeyDown(event) {
-    if (event.key === 'Tab') {
-      event.preventDefault();
-      setOpen(false);
-    }
+  let items = undefined;
+  if (category === 'partition') {
+    items = Object.keys(requestSummary()).filter(key => {
+      return key !== 'error' && key !== 'total';
+    });
+  } else if (category === 'status') {
+    items = Object.keys(requestSummary().nocona.jobs).filter(key => {
+      return key.charAt(0) === '%';
+    }).map(key => (key.slice(1)));
   }
 
-  const prevOpen = useRef(open);
-  useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
-    }
-
-    prevOpen.current = open;
-  }, [open]);
-
   return (
-    <div className={classes.root}>
-      <div>
-        <Button
-          ref={anchorRef}
-          aria-controls={open ? 'menu-list-grow' : undefined}
-          aria-haspopup="true"
-          onClick={handleToggle}
-        >
-          Select Partition
-        </Button>
-        <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
-            >
-              <Paper>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    {partitions.map(partition => {
-                      return (
-                        <MenuItem value={partition} onClick={onClick}>{partition.charAt(0).toUpperCase() + partition.slice(1)}</MenuItem>
-                      )
-                    })}
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
-      </div>
-    </div >
-  );
+    <FormControl variant="filled" className={classes.formControl}>
+      <InputLabel id="demo-simple-select-filled-label">{category.charAt(0).toUpperCase() + category.slice(1)}</InputLabel>
+      <Select
+        labelId="demo-simple-select-filled-label"
+        id="demo-simple-select-filled"
+        value={item}
+        onChange={handleChange}
+      >
+        <MenuItem value="none">
+          <em>None</em>
+        </MenuItem>
+        {items.map(item => {
+          return (
+            <MenuItem value={item} onClick={onClick}>{item.charAt(0).toUpperCase() + item.slice(1)}</MenuItem>
+          )
+        })}
+      </Select>
+    </FormControl>
+  )
 }
 
 export default Filter;
