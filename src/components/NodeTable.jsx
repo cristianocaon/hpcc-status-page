@@ -18,21 +18,6 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-
-// Specific information about the node to be displayed on popup
-const nodeInfo = {
-  name: 'Sample',
-  partition: 'Quanah',
-  status: 'mix',
-  freemem: '0',
-  totalmem: '120',
-  cpuload: '12',
-  cpualloc: '1',
-  cpuidle: '0',
-  cpuother: '0',
-  cputotal: '0',
-}
-
 const NodeTable = ({ rack, number }) => {
   const classes = useStyles();
   return (
@@ -43,7 +28,7 @@ const NodeTable = ({ rack, number }) => {
           {rack.map(arr => {
             return (
               <tr>
-                {arr.map(obj => <NodeCell state={obj.state} info={nodeInfo}>{obj.node}</NodeCell>)}
+                {arr.map(obj => <NodeCell state={obj.status} info={obj}>{obj.nodename}</NodeCell>)}
               </tr>
             )
           })}
