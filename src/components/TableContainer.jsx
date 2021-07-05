@@ -1,4 +1,4 @@
-import requestNodes from '../data/requestNodes';
+import requestNodes from '../service/requestNodes';
 import NodeTable from './NodeTable';
 import { useState } from 'react'
 import Paper from '@material-ui/core/Paper';

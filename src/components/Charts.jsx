@@ -2,7 +2,7 @@ import PieChart from './PieChart';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 
-import requestSummary from '../data/requestSummary';
+import requestSummary from '../service/requestSummary';
 import chartConfig from '../util/chartConfig';
 import parseSummaryData from '../util/parseSummaryData';
 

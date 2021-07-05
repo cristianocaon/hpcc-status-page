@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Filter from '../components/Filter';
-import requestJobs from '../data/requestJobs';
+import requestJobs from '../service/requestJobs';
 import { makeStyles } from '@material-ui/core/styles';
 import { DataGrid } from '@material-ui/data-grid';
 

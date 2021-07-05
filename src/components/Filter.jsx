@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Change later for partition field filtering
-import requestSummary from '../data/requestSummary';
+import requestSummary from '../service/requestSummary';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
