@@ -30,13 +30,13 @@ const Legend = () => {
     <div className={classes.root}>
       <Paper elevation={1}>
         <div className={classes.div}>
-          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#4E6E5D' }}></span> Allocated </span>
-          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#F09D51' }}></span> Idle </span>
-          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#C42021' }}></span>  Drain </span>
-          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#B1EDE8' }}></span> Draining </span>
-          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#9B7EDE' }}></span> Down </span>
-          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#861657' }}></span> Reserved </span>
-          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#0B132B' }}></span> Mix</span>
+          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#78AD32' }}></span> Allocated </span>
+          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#E98B15' }}></span> Idle </span>
+          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#3D6171' }}></span>  Drained </span>
+          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#9AAB99' }}></span> Draining </span>
+          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#DC391A' }}></span> Down </span>
+          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#463C3E' }}></span> Reserved </span>
+          <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#166137' }}></span> Mix</span>
           <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#b9b7bd' }}></span> Empty</span>
           <span className={classes.span}><span className={classes.dot} style={{ backgroundColor: '#313628' }}></span> Other</span>
         </div>
