@@ -3,6 +3,8 @@ import Filter from '../components/Filter'
 import Charts from '../components/Charts';
 import { makeStyles } from '@material-ui/core/styles';
 
+import requestSummary from '../service/requestSummary';
+
 const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
@@ -20,33 +22,55 @@ const useStyles = makeStyles(() => ({
   title: {
     display: 'flex',
     justifyContent: 'center',
+    fontFamily: 'Roboto',
   }
 }));
 
 export default function Summary() {
   const classes = useStyles();
 
-  const [partition, setPartition] = useState("");
+  const [partition, setPartition] = useState("Total");
   const [isDisplayed, setIsDisplayed] = useState(false);
 
-  // Still needs to fix -- select "None", close bottom section
   const handlePartitionSelection = (event) => {
     setPartition(event.target.innerText);
     setIsDisplayed(true);
   }
 
-  return (
-    <div>
+  const { charts, error, partitions } = requestSummary();
+
+  let partitionFields = Object.keys(partitions);
+  partitionFields.unshift('Total');
+  partitionFields.push('All');
+
+  if (!error) {
+    return (
       <div>
-        <div className={classes.filterContainer}>
-          <Filter category="partition" onClick={handlePartitionSelection} />
+        <div>
+          <div className={classes.filterContainer}>
+            <Filter title="Partition"
+              partitions={partitionFields}
+              onClick={handlePartitionSelection}
+            />
+          </div>
+          {partition !== 'All'
+            ? <><h2 className={classes.title}>{partition}</h2>
+              <Charts data={charts[partition.toLowerCase()]} /></>
+            : <>{partitionFields.map(ptt => {
+              if (ptt !== 'All') {
+                return (
+                  <>
+                    <h2 className={classes.title}>{ptt.charAt(0).toUpperCase() + ptt.slice(1)}</h2>
+                    <Charts data={charts[ptt.toLowerCase()]} />
+                  </>
+                )
+              }
+            })}</>
+          }
         </div>
-        <Charts isDisplayed={true} partition={"total"} />
       </div>
-      <div>
-        <h2 className={classes.title}>{partition}</h2>
-        <Charts isDisplayed={isDisplayed} partition={partition.toLowerCase()} />
-      </div>
-    </div>
-  );
+    );
+  } else {
+    return <h2>Something went wrong...</h2>
+  }
 }
