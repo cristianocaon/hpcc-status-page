@@ -26,22 +26,22 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function Summary() {
-  const classes = useStyles();
+export let partitionItems = Array();
 
+const Summary = () => {
+  const classes = useStyles();
   const [partition, setPartition] = useState("Total");
-  const [isDisplayed, setIsDisplayed] = useState(false);
 
   const handlePartitionSelection = (event) => {
     setPartition(event.target.innerText);
-    setIsDisplayed(true);
   }
 
   const { charts, error, partitions } = requestSummary();
-
   let partitionFields = Object.keys(partitions);
   partitionFields.unshift('Total');
   partitionFields.push('All');
+
+  partitionItems = [...partitionFields];
 
   if (!error) {
     return (
@@ -74,3 +74,5 @@ export default function Summary() {
     return <h2>Something went wrong...</h2>
   }
 }
+
+export default Summary;

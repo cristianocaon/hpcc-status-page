@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Filter from '../components/Filter';
-import requestJobs from '../service/requestJobs';
 import { makeStyles } from '@material-ui/core/styles';
 import { DataGrid } from '@material-ui/data-grid';
+
+import { partitionItems } from '../views/Summary';
+import requestJobs from '../service/requestJobs';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,8 +79,12 @@ const Jobs = () => {
     <div>
       <div className={classes.root}>
         <div className={classes.filterContainer}>
-          <Filter title="Partition" onClick={handlePartitionSelection} />
-          <Filter title="Status" onClick={handlePartitionSelection} />
+          <Filter title="Partition"
+            partitions={partitionItems}
+            onClick={handlePartitionSelection}
+          />
+          <Filter title="Status"
+            onClick={handlePartitionSelection} />
         </div>
         <DataGrid
           rows={data2}

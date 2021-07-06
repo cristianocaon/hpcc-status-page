@@ -4,6 +4,8 @@ import Filter from '../components/Filter';
 import TableContainer from '../components/TableContainer';
 import { makeStyles } from '@material-ui/core/styles';
 
+import { partitionItems } from '../views/Summary';
+
 const useStyles = makeStyles(() => ({
   filterContainer: {
     display: 'flex',
@@ -25,7 +27,9 @@ const Nodes = () => {
     <div>
       <Legend />
       <div className={classes.filterContainer}>
-        <Filter title="Partition" onClick={handlePartitionSelection} />
+        <Filter title="Partition"
+          partitions={partitionItems}
+          onClick={handlePartitionSelection} />
       </div>
       <TableContainer />
     </div>
