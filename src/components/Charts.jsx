@@ -2,7 +2,6 @@ import PieChart from './PieChart';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 
-import requestSummary from '../service/requestSummary';
 import chartConfig from '../util/chartConfig';
 import parseSummaryData from '../util/parseSummaryData';
 
@@ -30,45 +29,33 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Charts = ({ isDisplayed, partition }) => {
+const Charts = ({ data }) => {
   const classes = useStyles();
 
-  const summary = requestSummary();
-  let jobSummaryConfig = undefined;
-  let nodeSummaryConfig = undefined;
-  let usageSummaryConfig = undefined;
-  if (summary.error === "" && partition !== "") {
-    const [usageLabels, usageValues] = parseSummaryData(summary[partition].usage)
-    usageSummaryConfig = chartConfig(usageLabels, usageValues);
-    const [jobLabels, jobValues] = parseSummaryData(summary[partition].jobs)
-    jobSummaryConfig = chartConfig(jobLabels, jobValues);
-    const [nodeLabels, nodeValues] = parseSummaryData(summary[partition].nodes)
-    nodeSummaryConfig = chartConfig(nodeLabels, nodeValues);
-  } else {
-    // Change this to display on interface
-    console.log(summary.error);
-  }
+  const [usageLabels, usageValues] = parseSummaryData(data.usage)
+  const [jobLabels, jobValues] = parseSummaryData(data.jobs)
+  const [nodeLabels, nodeValues] = parseSummaryData(data.nodes)
 
-  if (isDisplayed) {
-    return (
-      <div className={classes.root}>
-        <Paper className={classes.chart} elevation={1}>
-          <label className={classes.title}>Usage</label>
-          <PieChart data={usageSummaryConfig} />
-        </Paper>
-        <Paper className={classes.chart} elevation={1}>
-          <label className={classes.title}>Job Status</label>
-          <PieChart data={jobSummaryConfig} />
-        </Paper>
-        <Paper className={classes.chart} elevation={1}>
-          <label className={classes.title}>Node Status</label>
-          <PieChart data={nodeSummaryConfig} />
-        </Paper>
-      </div>
-    );
-  } else {
-    return null;
-  }
+  const usageConfig = chartConfig(usageLabels, usageValues);
+  const jobConfig = chartConfig(jobLabels, jobValues);
+  const nodeConfig = chartConfig(nodeLabels, nodeValues);
+
+  return (
+    <div className={classes.root}>
+      <Paper className={classes.chart} elevation={1}>
+        <label className={classes.title}>Usage</label>
+        <PieChart data={usageConfig} />
+      </Paper>
+      <Paper className={classes.chart} elevation={1}>
+        <label className={classes.title}>Job Status</label>
+        <PieChart data={jobConfig} />
+      </Paper>
+      <Paper className={classes.chart} elevation={1}>
+        <label className={classes.title}>Node Status</label>
+        <PieChart data={nodeConfig} />
+      </Paper>
+    </div>
+  );
 }
 
 export default Charts;
