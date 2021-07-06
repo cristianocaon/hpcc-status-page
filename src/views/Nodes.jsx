@@ -25,7 +25,7 @@ const Nodes = () => {
     <div>
       <Legend />
       <div className={classes.filterContainer}>
-        <Filter category="partition" onClick={handlePartitionSelection} />
+        <Filter title="Partition" onClick={handlePartitionSelection} />
       </div>
       <TableContainer />
     </div>

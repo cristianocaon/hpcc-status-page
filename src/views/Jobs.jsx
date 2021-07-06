@@ -77,8 +77,8 @@ const Jobs = () => {
     <div>
       <div className={classes.root}>
         <div className={classes.filterContainer}>
-          <Filter category="partition" onClick={handlePartitionSelection} />
-          <Filter category="status" onClick={handlePartitionSelection} />
+          <Filter title="Partition" onClick={handlePartitionSelection} />
+          <Filter title="Status" onClick={handlePartitionSelection} />
         </div>
         <DataGrid
           rows={data2}
