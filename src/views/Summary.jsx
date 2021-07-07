@@ -38,10 +38,9 @@ const Summary = () => {
 
   const { charts, error, partitions } = requestSummary();
   let partitionFields = Object.keys(partitions);
+  partitionItems = [...partitionFields];
   partitionFields.unshift('Total');
   partitionFields.push('All');
-
-  partitionItems = [...partitionFields];
 
   if (!error) {
     return (
