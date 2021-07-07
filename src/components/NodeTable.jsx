@@ -20,19 +20,30 @@ const useStyles = makeStyles(() => ({
 
 const NodeTable = ({ rack, number }) => {
   const classes = useStyles();
+
+  const getRows = (rack) => {
+    let rows = Array();
+    for (let row = Object.keys(rack).length; row > 0; row--) {
+      rows.push(
+        <tr>
+          {rack[row].map(obj => {
+            if (obj) {
+              return <NodeCell state={obj.status} info={obj}>{obj.nodename}</NodeCell>
+            } else {
+              return <NodeCell state={'empty'} info={{ state: 'empty' }}>{'---------------'}</NodeCell>
+            }
+          })}
+        </tr>
+      )
+    }
+    return rows;
+  }
+
   return (
     <div className={classes.root}>
       <label className={classes.title}><em>Rack {number}</em></label>
       <table className={classes.table}>
-        <tbody>
-          {rack.map(arr => {
-            return (
-              <tr>
-                {arr.map(obj => <NodeCell state={obj.status} info={obj}>{obj.nodename}</NodeCell>)}
-              </tr>
-            )
-          })}
-        </tbody>
+        {getRows(rack)}
       </table>
     </div>
   )
