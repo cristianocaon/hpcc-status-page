@@ -11,10 +11,15 @@ const useStyles = makeStyles(() => ({
     border: '3px solid #4c514f',
     borderCollapse: 'separate',
     margin: '5px',
-    tableLayout: 'fixed'
+    tableLayout: 'fixed',
+    width: '275px'
   },
   title: {
+    fontFamily: 'Roboto, sans-serif',
     paddingBottom: '0',
+  },
+  row: {
+    width: '300px',
   }
 }));
 
@@ -22,15 +27,25 @@ const NodeTable = ({ rack, number }) => {
   const classes = useStyles();
 
   const getRows = (rack) => {
-    let rows = Array();
+    let rows = [];
     for (let row = Object.keys(rack).length; row > 0; row--) {
       rows.push(
-        <tr>
+        <tr className={classes.row}>
           {rack[row].map(obj => {
-            if (obj) {
-              return <NodeCell state={obj.status} info={obj}>{obj.nodename}</NodeCell>
+            if (rack[row].length === 1) {
+              if (obj) {
+                return <NodeCell info={obj} colSpan={4}>{obj.nodename}</NodeCell>
+              } else {
+                return <NodeCell info={{ status: 'empty' }} colSpan={4}>{'-------'}</NodeCell>
+
+              }
             } else {
-              return <NodeCell state={'empty'} info={{ state: 'empty' }}>{'---------------'}</NodeCell>
+              if (obj) {
+                return <NodeCell info={obj} colSpan={1}>{obj.nodename}</NodeCell>
+              } else {
+                return <NodeCell info={{ status: 'empty' }} colSpan={1}>{'-------'}</NodeCell>
+
+              }
             }
           })}
         </tr>
@@ -41,7 +56,7 @@ const NodeTable = ({ rack, number }) => {
 
   return (
     <div className={classes.root}>
-      <label className={classes.title}><em>Rack {number}</em></label>
+      <label className={classes.title}><em>{number}</em></label>
       <table className={classes.table}>
         {getRows(rack)}
       </table>
