@@ -30,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const { jobs, errors } = requestJobs();
+
 const Jobs = () => {
   const classes = useStyles();
 
@@ -44,12 +46,11 @@ const Jobs = () => {
     setStatus(event.target.innerText);
   }
 
-  const jobs = requestJobs();
   let fields = undefined;
-  let data2 = undefined;
+  let data = undefined;
 
-  if (jobs.errors === "") {
-    fields = Object.keys(jobs.jobs[0]).filter(job => {
+  if (errors === "") {
+    fields = Object.keys(jobs[0]).filter(job => {
       return job !== 'nodelist';
     }).map(column => {
       let header = column.toUpperCase();
@@ -65,14 +66,14 @@ const Jobs = () => {
       });
     });
 
-    data2 = jobs.jobs.map(obj => {
+    data = jobs.map(obj => {
       let { jobid, ...data } = obj;
       data["id"] = jobid;
       return data;
     });
   } else {
     // Change this to display on interface
-    console.log(jobs.errors);
+    console.log(errors);
   }
 
   return (
@@ -84,14 +85,15 @@ const Jobs = () => {
             onClick={handlePartitionSelection}
           />
           <Filter title="Status"
-            onClick={handlePartitionSelection} />
+            onClick={handleStatusSelection} />
         </div>
         <DataGrid
-          rows={data2}
+          rows={data}
           columns={fields}
           pageSize={8}
           autoHeight={true}
           disableColumnMenu={true}
+          disableSelectionOnClick={true}
         />
       </div>
     </div>
