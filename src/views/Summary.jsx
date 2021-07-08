@@ -26,7 +26,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export let partitionItems = Array();
+export let partitionItems = [];
 
 const Summary = () => {
   const classes = useStyles();
@@ -55,15 +55,11 @@ const Summary = () => {
           {partition !== 'All'
             ? <><h2 className={classes.title}>{partition}</h2>
               <Charts data={charts[partition.toLowerCase()]} /></>
-            : <>{partitionFields.map(ptt => {
-              if (ptt !== 'All') {
-                return (
-                  <>
-                    <h2 className={classes.title}>{ptt.charAt(0).toUpperCase() + ptt.slice(1)}</h2>
-                    <Charts data={charts[ptt.toLowerCase()]} />
-                  </>
-                )
-              }
+            : <>{partitionItems.map(ptt => {
+              return <>
+                <h2 className={classes.title}>{ptt.charAt(0).toUpperCase() + ptt.slice(1)}</h2>
+                <Charts data={charts[ptt.toLowerCase()]} />
+              </>
             })}</>
           }
         </div>
