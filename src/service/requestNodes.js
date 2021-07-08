@@ -1,10 +1,6 @@
-// Use later for server request
-// import axios from 'axios';
-
-const nodes = require('../data/nodes.json')
+const nodes = require('../data/v2/nodes.json')
 
 const requestNodes = () => {
-  // console.log(nodes);
   return nodes;
 }
 
