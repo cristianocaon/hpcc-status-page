@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     fontSize: '0.4rem',
     padding: '1em',
     border: '0.5px solid #3d403f',
+    textAlign: 'center',
     '&:hover': {
       opacity: '0.5',
       transition: 'opacity .4s ease-out',
@@ -26,11 +27,12 @@ const useStyles = makeStyles({
     padding: '10px',
   },
   text: {
+    fontFamily: 'Roboto,,ans-serif',
     fontSize: '0.7rem',
   }
 })
 
-const NodeCell = (props) => {
+const NodeCell = ({ children, info, colSpan }) => {
   const generateStateColor = (status) => {
     if (status === 'allocated') return '#78AD32';
     else if (status === 'drained') return '#3D6171';
@@ -43,7 +45,7 @@ const NodeCell = (props) => {
     else return '#313628';
   }
 
-  const styleProps = { backgroundColor: generateStateColor(props.state) };
+  const styleProps = { backgroundColor: generateStateColor(info.status) };
   const classes = useStyles(styleProps);
 
   const popupState = usePopupState({
@@ -52,16 +54,16 @@ const NodeCell = (props) => {
   })
 
   return (
-    <td className={classes.cell} {...bindToggle(popupState)} onMouseLeave={_ => {
+    <td className={classes.cell} colSpan={colSpan} {...bindToggle(popupState)} onMouseLeave={_ => {
       if (popupState.isOpen) {
         popupState.close();
       }
     }}>
-      <Typography className={classes.text}>{props.children}</Typography>
+      <Typography className={classes.text}>{children}</Typography>
       <Popper {...bindPopper(popupState)} transition>
         <Paper className={classes.paper}>
           <Typography>
-            {Object.keys(props.info).map(field => <Typography><strong>{field}</strong>: {props.info[field]}</Typography>)}
+            {Object.keys(info).map(field => <Typography><strong>{field}</strong>: {info[field]}</Typography>)}
           </Typography>
         </Paper>
       </Popper>
