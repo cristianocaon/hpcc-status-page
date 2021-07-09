@@ -27,9 +27,17 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Roboto',
     margin: '10px',
   },
+  error: {
+    display: 'flex',
+    justifyContent: 'center',
+    fontFamily: 'Roboto',
+    margin: '10px',
+  }
 }));
 
 export let partitionItems = [];
+
+const summary = requestSummary();
 
 const Summary = () => {
   const classes = useStyles();
@@ -39,13 +47,14 @@ const Summary = () => {
     setPartition(event.target.innerText);
   }
 
-  const { charts, error, partitions } = requestSummary();
-  let partitionFields = Object.keys(partitions);
-  partitionItems = [...partitionFields];
-  partitionFields.unshift('Total');
-  partitionFields.push('All');
+  if (!('error' in summary)) {
+    let { charts, partitions } = summary;
 
-  if (!error) {
+    let partitionFields = Object.keys(partitions);
+    partitionItems = [...partitionFields];
+    partitionFields.unshift('Total');
+    partitionFields.push('All');
+
     return (
       <>
         <h2 className={classes.title}>Partition Status</h2>
@@ -70,7 +79,7 @@ const Summary = () => {
       </>
     );
   } else {
-    return <h2>Something went wrong...</h2>
+    return <h2 className={classes.error}>Something went wrong... ERROR: '{summary.error}'</h2>
   }
 }
 

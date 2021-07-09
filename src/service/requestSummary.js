@@ -1,7 +1,7 @@
-const summary = require('../data/summary.json')
+const { charts, error, partitions } = require('../data/summary.json')
 
 const requestSummary = () => {
-  return summary;
+  return !error ? { charts, partitions } : { charts, partitions, error };
 }
 
 export default requestSummary;
