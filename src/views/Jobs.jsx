@@ -28,9 +28,15 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  errors: {
+    display: 'flex',
+    justifyContent: 'center',
+    fontFamily: 'Roboto',
+    margin: '10px',
+  }
 }));
 
-const { jobs, errors } = requestJobs();
+const jobsInfo = requestJobs();
 
 const Jobs = () => {
   const classes = useStyles();
@@ -49,7 +55,8 @@ const Jobs = () => {
   let fields = undefined;
   let data = undefined;
 
-  if (errors === "") {
+  if (!('errors' in jobsInfo)) {
+    let { jobs } = jobsInfo;
     fields = Object.keys(jobs[0]).filter(job => {
       return job !== 'nodelist';
     }).map(column => {
@@ -71,33 +78,32 @@ const Jobs = () => {
       data["id"] = jobid;
       return data;
     });
-  } else {
-    // Change this to display on interface
-    console.log(errors);
-  }
 
-  return (
-    <div>
-      <div className={classes.root}>
-        <div className={classes.filterContainer}>
-          <Filter title="Partition"
-            partitions={partitionItems}
-            onClick={handlePartitionSelection}
+    return (
+      <div>
+        <div className={classes.root}>
+          <div className={classes.filterContainer}>
+            <Filter title="Partition"
+              partitions={partitionItems}
+              onClick={handlePartitionSelection}
+            />
+            <Filter title="Status"
+              onClick={handleStatusSelection} />
+          </div>
+          <DataGrid
+            rows={data}
+            columns={fields}
+            pageSize={8}
+            autoHeight={true}
+            disableColumnMenu={true}
+            disableSelectionOnClick={true}
           />
-          <Filter title="Status"
-            onClick={handleStatusSelection} />
         </div>
-        <DataGrid
-          rows={data}
-          columns={fields}
-          pageSize={8}
-          autoHeight={true}
-          disableColumnMenu={true}
-          disableSelectionOnClick={true}
-        />
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <h2 className={classes.errors}>Something went wrong... ERROR: '{jobsInfo.errors}'</h2>
+  }
 }
 
 export default Jobs

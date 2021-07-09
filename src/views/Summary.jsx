@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export let partitionItems = [];
 
-const summary = requestSummary();
+const summaryInfo = requestSummary();
 
 const Summary = () => {
   const classes = useStyles();
@@ -47,8 +47,8 @@ const Summary = () => {
     setPartition(event.target.innerText);
   }
 
-  if (!('error' in summary)) {
-    let { charts, partitions } = summary;
+  if (!('error' in summaryInfo)) {
+    let { charts, partitions } = summaryInfo;
 
     let partitionFields = Object.keys(partitions);
     partitionItems = [...partitionFields];
@@ -79,7 +79,7 @@ const Summary = () => {
       </>
     );
   } else {
-    return <h2 className={classes.error}>Something went wrong... ERROR: '{summary.error}'</h2>
+    return <h2 className={classes.error}>Something went wrong... ERROR: '{summaryInfo.error}'</h2>
   }
 }
 

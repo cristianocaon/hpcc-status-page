@@ -1,7 +1,8 @@
-const jobs = require('../data/jobs.json')
+const { errors, jobs } = require('../data/jobs.json')
 
 const requestJobs = () => {
-  return jobs;
+  return !errors ? { jobs } : { jobs, errors };
+
 }
 
 export default requestJobs;

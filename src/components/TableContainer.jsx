@@ -26,53 +26,65 @@ const useStyles = makeStyles(() => ({
   },
   pagination: {
     marginBottom: '20px',
+  },
+  errors: {
+    display: 'flex',
+    justifyContent: 'center',
+    fontFamily: 'Roboto',
+    margin: '10px',
   }
 }));
 
-const { nodes } = requestNodes();
+const nodesInfo = requestNodes();
 
 const TableContainer = () => {
   const classes = useStyles();
   const [page, setPage] = useState(1);
+  if (!('errors' in nodesInfo)) {
 
-  let rackNums = Object.keys(nodes).sort((a, b) => {
-    let n1 = parseInt(a.split('_')[1]);
-    let n2 = parseInt(b.split('_')[1]);
-    if (n1 < n2) return -1;
-    if (n1 > n2) return 1;
-    return 0;
-  }).reduce((resultArray, item, index) => {
-    const chunkIndex = Math.floor(index / 5)
-    if (!resultArray[chunkIndex]) {
-      resultArray[chunkIndex] = []
-    }
-    resultArray[chunkIndex].push(item)
-    return resultArray
-  }, []);
+    let { nodes } = nodesInfo;
 
-  const getRacks = (racks, page) => {
-    let tables = [];
-    if (rackNums[page - 1]) {
-      for (let num of rackNums[page - 1]) {
-        tables.push(<NodeTable rack={racks[num]} number={num} />)
+    let rackNums = Object.keys(nodes).sort((a, b) => {
+      let n1 = parseInt(a.split('_')[1]);
+      let n2 = parseInt(b.split('_')[1]);
+      if (n1 < n2) return -1;
+      if (n1 > n2) return 1;
+      return 0;
+    }).reduce((resultArray, item, index) => {
+      const chunkIndex = Math.floor(index / 5)
+      if (!resultArray[chunkIndex]) {
+        resultArray[chunkIndex] = []
       }
-    }
-    return tables;
-  }
+      resultArray[chunkIndex].push(item)
+      return resultArray
+    }, []);
 
-  return (
-    <Paper className={classes.root} elevation={1}>
-      <div className={classes.tables}>
-        {getRacks(nodes, page)}
-      </div>
-      <Pagination
-        className={classes.pagination}
-        page={page}
-        count={rackNums.length}
-        variant="outlined"
-        onChange={(event, page) => setPage(page)} />
-    </Paper>
-  )
+    const getRacks = (racks, page) => {
+      let tables = [];
+      if (rackNums[page - 1]) {
+        for (let num of rackNums[page - 1]) {
+          tables.push(<NodeTable rack={racks[num]} number={num} />)
+        }
+      }
+      return tables;
+    }
+
+    return (
+      <Paper className={classes.root} elevation={1}>
+        <div className={classes.tables}>
+          {getRacks(nodes, page)}
+        </div>
+        <Pagination
+          className={classes.pagination}
+          page={page}
+          count={rackNums.length}
+          variant="outlined"
+          onChange={(event, page) => setPage(page)} />
+      </Paper>
+    )
+  } else {
+    return <h2 className={classes.errors}>Something went wrong... ERROR: '{nodesInfo.errors}'</h2>
+  }
 }
 
 export default TableContainer
