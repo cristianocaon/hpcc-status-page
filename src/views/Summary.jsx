@@ -2,11 +2,12 @@ import { useState } from 'react';
 import Filter from '../components/Filter'
 import Charts from '../components/Charts';
 import Availability from '../components/Availability';
+import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 
 import requestSummary from '../service/requestSummary';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
@@ -24,8 +25,8 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     fontFamily: 'Roboto',
-    margin: '10px'
-  }
+    margin: '10px',
+  },
 }));
 
 export let partitionItems = [];
@@ -47,7 +48,9 @@ const Summary = () => {
   if (!error) {
     return (
       <>
+        <h2 className={classes.title}>Partition Status</h2>
         <Availability partitions={partitions} />
+        <Divider />
         <div className={classes.filterContainer}>
           <Filter title="Partition"
             partitions={partitionFields}
