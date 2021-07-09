@@ -54,7 +54,7 @@ const Availability = ({ partitions }) => {
             <Typography className={classes.box} style={{ backgroundColor: partitions[partition] === 'UP' ? 'green' : 'red' }}>{partition}</Typography>
             <Popper {...bindPopper(popupState)} transition>
               <Paper className={classes.paper}>
-                <Typography><strong>State</strong>: {partitions[partition]}</Typography>
+                <Typography><strong>Status</strong>: {partitions[partition]}</Typography>
               </Paper>
             </Popper>
           </div>
