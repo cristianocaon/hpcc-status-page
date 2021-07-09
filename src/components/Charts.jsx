@@ -1,5 +1,6 @@
 import PieChart from './PieChart';
 import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 import chartConfig from '../util/chartConfig';
@@ -20,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     margin: '5px',
+  },
+  error: {
+    margin: '50px',
+    // textAlign: 'center',
   }
 }));
 
@@ -38,15 +43,15 @@ const Charts = ({ data }) => {
     <div className={classes.root}>
       <Card className={classes.card}>
         <label className={classes.title}><strong>Usage</strong></label>
-        <PieChart data={usageConfig} />
+        {usageValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={usageConfig} /> : <Typography className={classes.error}>No data available</Typography>}
       </Card>
       <Card className={classes.card}>
         <label className={classes.title}><strong>Job Status</strong></label>
-        <PieChart data={jobConfig} />
+        {jobValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={jobConfig} /> : <Typography className={classes.error}>No data available</Typography>}
       </Card>
       <Card className={classes.card}>
         <label className={classes.title}><strong>Node Status</strong></label>
-        <PieChart data={nodeConfig} />
+        {nodeValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={nodeConfig} /> : <Typography className={classes.error}>No data available</Typography>}
       </Card>
     </div>
   );
