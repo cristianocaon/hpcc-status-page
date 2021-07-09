@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Filter from '../components/Filter'
 import Charts from '../components/Charts';
+import Availability from '../components/Availability';
 import { makeStyles } from '@material-ui/core/styles';
 
 import requestSummary from '../service/requestSummary';
@@ -46,6 +47,7 @@ const Summary = () => {
   if (!error) {
     return (
       <>
+        <Availability partitions={partitions} />
         <div className={classes.filterContainer}>
           <Filter title="Partition"
             partitions={partitionFields}
