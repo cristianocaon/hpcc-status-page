@@ -19,7 +19,7 @@ const App = () => {
     <div className="App">
       <Router>
         <Header />
-        <label className={classes.timer}>Update request for data: {Date.now()}</label>
+        <label className={classes.timer}>Update data request: {Date.now()}</label>
         <Content />
       </Router>
     </div>
