@@ -13,6 +13,7 @@ const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
+    marginBottom: '10px',
   },
   box: {
     border: '2px solid black',
