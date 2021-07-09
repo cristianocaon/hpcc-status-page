@@ -1,5 +1,5 @@
 import PieChart from './PieChart';
-import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 
 import chartConfig from '../util/chartConfig';
@@ -10,22 +10,16 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    '& > *': {
-      margin: theme.spacing(2),
-      padding: theme.spacing(2),
-      width: theme.spacing(30),
-      height: theme.spacing(30),
-    },
-  },
-  chart: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%'
+    marginBottom: '30px'
   },
   title: {
     display: 'flex',
     justifyContent: 'center',
-    fontFamily: 'Roboto'
+    fontFamily: 'Roboto',
+    margin: '10px',
+  },
+  card: {
+    margin: '5px',
   }
 }));
 
@@ -42,18 +36,18 @@ const Charts = ({ data }) => {
 
   return (
     <div className={classes.root}>
-      <Paper className={classes.chart} elevation={1}>
-        <label className={classes.title}>Usage</label>
+      <Card className={classes.card}>
+        <label className={classes.title}><strong>Usage</strong></label>
         <PieChart data={usageConfig} />
-      </Paper>
-      <Paper className={classes.chart} elevation={1}>
-        <label className={classes.title}>Job Status</label>
+      </Card>
+      <Card className={classes.card}>
+        <label className={classes.title}><strong>Job Status</strong></label>
         <PieChart data={jobConfig} />
-      </Paper>
-      <Paper className={classes.chart} elevation={1}>
-        <label className={classes.title}>Node Status</label>
+      </Card>
+      <Card className={classes.card}>
+        <label className={classes.title}><strong>Node Status</strong></label>
         <PieChart data={nodeConfig} />
-      </Paper>
+      </Card>
     </div>
   );
 }

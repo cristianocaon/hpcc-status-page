@@ -23,6 +23,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     fontFamily: 'Roboto',
+    margin: '10px'
   }
 }));
 
@@ -44,26 +45,24 @@ const Summary = () => {
 
   if (!error) {
     return (
-      <div>
-        <div>
-          <div className={classes.filterContainer}>
-            <Filter title="Partition"
-              partitions={partitionFields}
-              onClick={handlePartitionSelection}
-            />
-          </div>
-          {partition !== 'All'
-            ? <><h2 className={classes.title}>{partition}</h2>
-              <Charts data={charts[partition.toLowerCase()]} /></>
-            : <>{partitionItems.map(ptt => {
-              return <>
-                <h2 className={classes.title}>{ptt.charAt(0).toUpperCase() + ptt.slice(1)}</h2>
-                <Charts data={charts[ptt.toLowerCase()]} />
-              </>
-            })}</>
-          }
+      <>
+        <div className={classes.filterContainer}>
+          <Filter title="Partition"
+            partitions={partitionFields}
+            onClick={handlePartitionSelection}
+          />
         </div>
-      </div>
+        {partition !== 'All'
+          ? <><h2 className={classes.title}>{partition}</h2>
+            <Charts data={charts[partition.toLowerCase()]} /></>
+          : <>{partitionItems.map(ptt => {
+            return <>
+              <h2 className={classes.title}>{ptt.charAt(0).toUpperCase() + ptt.slice(1)}</h2>
+              <Charts data={charts[ptt.toLowerCase()]} />
+            </>
+          })}</>
+        }
+      </>
     );
   } else {
     return <h2>Something went wrong...</h2>
