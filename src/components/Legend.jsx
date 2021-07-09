@@ -1,4 +1,3 @@
-import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
@@ -25,8 +24,7 @@ const useStyles = makeStyles(() => ({
 const Legend = () => {
   const classes = useStyles();
   return (
-    // <div className={classes.root}>
-    <Paper className={classes.root} elevation={1}>
+    <div className={classes.root}>
       <span className={classes.dot} style={{ backgroundColor: '#78AD32' }}></span><span> Allocated </span>
       <span className={classes.dot} style={{ backgroundColor: '#E98B15' }}></span><span> Idle </span>
       <span className={classes.dot} style={{ backgroundColor: '#3D6171' }}></span><span>  Drained </span>
@@ -36,8 +34,7 @@ const Legend = () => {
       <span className={classes.dot} style={{ backgroundColor: '#166137' }}></span><span> Mix</span>
       <span className={classes.dot} style={{ backgroundColor: '#b9b7bd' }}></span><span> Empty</span>
       <span className={classes.dot} style={{ backgroundColor: '#313628' }}></span><span> Other</span>
-    </Paper>
-    // </div>
+    </div>
   )
 }
 
