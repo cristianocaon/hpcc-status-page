@@ -43,15 +43,15 @@ const Charts = ({ data }) => {
     <div className={classes.root}>
       <Card className={classes.card}>
         <label className={classes.title}><strong>Usage</strong></label>
-        {usageValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={usageConfig} /> : <Typography className={classes.error}>No data available</Typography>}
+        {usageValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={usageConfig} /> : <Typography className={classes.error}>No usage information available</Typography>}
       </Card>
       <Card className={classes.card}>
         <label className={classes.title}><strong>Job Status</strong></label>
-        {jobValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={jobConfig} /> : <Typography className={classes.error}>No data available</Typography>}
+        {jobValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={jobConfig} /> : <Typography className={classes.error}>No jobs currently running</Typography>}
       </Card>
       <Card className={classes.card}>
         <label className={classes.title}><strong>Node Status</strong></label>
-        {nodeValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={nodeConfig} /> : <Typography className={classes.error}>No data available</Typography>}
+        {nodeValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={nodeConfig} /> : <Typography className={classes.error}>No status information available</Typography>}
       </Card>
     </div>
   );
