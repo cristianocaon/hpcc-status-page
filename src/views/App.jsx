@@ -34,7 +34,7 @@ const App = () => {
       <Router>
         <Header />
         <label className={classes.info}>Refreshing automatically every 2 minutes
-          <a onClick={handleRefresh}><FontAwesomeIcon icon={faSync} className={classes.icon} spin /></a>
+          <a onClick={handleRefresh}><FontAwesomeIcon icon={faSync} className={classes.icon} /></a>
         </label>
         <Content />
       </Router>
