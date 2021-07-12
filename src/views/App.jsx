@@ -33,7 +33,7 @@ const App = () => {
     <div className="App">
       <Router>
         <Header />
-        <label className={classes.info}>Automatically refreshing every 2 minutes
+        <label className={classes.info}>Refreshing automatically every 2 minutes
           <a onClick={handleRefresh}><FontAwesomeIcon icon={faSync} className={classes.icon} spin /></a>
         </label>
         <Content />
