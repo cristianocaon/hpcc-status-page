@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NodeTable from './NodeTable';
 import Paper from '@material-ui/core/Paper';
 import Pagination from '@material-ui/lab/Pagination';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 
 import requestNodes from '../service/requestNodes';
@@ -31,7 +32,6 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     fontFamily: 'Roboto',
-    margin: '10px',
   }
 }));
 
@@ -83,7 +83,11 @@ const TableContainer = () => {
       </Paper>
     )
   } else {
-    return <h2 className={classes.errors}>Something went wrong... ERROR: '{nodesInfo.errors}'</h2>
+    return <Alert severity="error"
+      className={classes.errors}>
+      <AlertTitle>Error</AlertTitle>'
+      {nodesInfo.errors}'
+    </Alert>
   }
 }
 

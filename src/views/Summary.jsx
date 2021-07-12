@@ -3,6 +3,7 @@ import Filter from '../components/Filter'
 import Charts from '../components/Charts';
 import Availability from '../components/Availability';
 import Divider from '@material-ui/core/Divider';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 
 import requestSummary from '../service/requestSummary';
@@ -31,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     fontFamily: 'Roboto',
-    margin: '10px',
   }
 }));
 
@@ -79,7 +79,11 @@ const Summary = () => {
       </>
     );
   } else {
-    return <h2 className={classes.error}>Something went wrong... ERROR: '{summaryInfo.error}'</h2>
+    return <Alert severity="error"
+      className={classes.error}>
+      <AlertTitle>Error</AlertTitle>'
+      {summaryInfo.error}'
+    </Alert>
   }
 }
 
