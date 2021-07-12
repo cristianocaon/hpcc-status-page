@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Filter from '../components/Filter';
+import Loading from '../components/Loading';
 import { DataGrid } from '@material-ui/data-grid';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
@@ -43,6 +44,7 @@ const Jobs = () => {
 
   const [partition, setPartition] = useState("");
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const handlePartitionSelection = (event) => {
     setPartition(event.target.innerText);
@@ -51,6 +53,10 @@ const Jobs = () => {
   const handleStatusSelection = (event) => {
     setStatus(event.target.innerText);
   }
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2000)
+  }, [])
 
   let fields = undefined;
   let data = undefined;
@@ -80,26 +86,31 @@ const Jobs = () => {
     });
 
     return (
-      <div>
-        <div className={classes.root}>
-          <div className={classes.filterContainer}>
-            <Filter title="Partition"
-              partitions={partitionItems}
-              onClick={handlePartitionSelection}
-            />
-            <Filter title="Status"
-              onClick={handleStatusSelection} />
+      <>
+        {!loading ?
+          <div>
+            <div className={classes.root}>
+              <div className={classes.filterContainer}>
+                <Filter title="Partition"
+                  partitions={partitionItems}
+                  onClick={handlePartitionSelection}
+                />
+                <Filter title="Status"
+                  onClick={handleStatusSelection} />
+              </div>
+              <DataGrid
+                rows={data}
+                columns={fields}
+                pageSize={8}
+                autoHeight={true}
+                disableColumnMenu={true}
+                disableSelectionOnClick={true}
+              />
+            </div>
           </div>
-          <DataGrid
-            rows={data}
-            columns={fields}
-            pageSize={8}
-            autoHeight={true}
-            disableColumnMenu={true}
-            disableSelectionOnClick={true}
-          />
-        </div>
-      </div>
+          : <Loading />
+        }
+      </>
     );
   } else {
     return <Alert severity="error"

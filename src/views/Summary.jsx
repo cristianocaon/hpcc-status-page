@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Filter from '../components/Filter'
 import Charts from '../components/Charts';
 import Availability from '../components/Availability';
+import Loading from '../components/Loading';
 import Divider from '@material-ui/core/Divider';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
@@ -42,10 +43,15 @@ const summaryInfo = requestSummary();
 const Summary = () => {
   const classes = useStyles();
   const [partition, setPartition] = useState("Total");
+  const [loading, setLoading] = useState(true);
 
   const handlePartitionSelection = (event) => {
     setPartition(event.target.innerText);
   }
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2000)
+  }, [])
 
   if (!('error' in summaryInfo)) {
     let { charts, partitions } = summaryInfo;
@@ -57,24 +63,29 @@ const Summary = () => {
 
     return (
       <>
-        <h2 className={classes.title}>Partition Status</h2>
-        <Availability partitions={partitions} />
-        <Divider />
-        <div className={classes.filterContainer}>
-          <Filter title="Partition"
-            partitions={partitionFields}
-            onClick={handlePartitionSelection}
-          />
-        </div>
-        {partition !== 'All'
-          ? <><h2 className={classes.title}>{partition}</h2>
-            <Charts data={charts[partition.toLowerCase()]} /></>
-          : <>{partitionItems.map(ptt => {
-            return <>
-              <h2 className={classes.title}>{ptt.charAt(0).toUpperCase() + ptt.slice(1)}</h2>
-              <Charts data={charts[ptt.toLowerCase()]} />
-            </>
-          })}</>
+        {!loading ?
+          <>
+            <h2 className={classes.title}>Partition Status</h2>
+            <Availability partitions={partitions} />
+            <Divider />
+            <div className={classes.filterContainer}>
+              <Filter title="Partition"
+                partitions={partitionFields}
+                onClick={handlePartitionSelection}
+              />
+            </div>
+            {partition !== 'All'
+              ? <><h2 className={classes.title}>{partition}</h2>
+                <Charts data={charts[partition.toLowerCase()]} /></>
+              : <>{partitionItems.map(ptt => {
+                return <>
+                  <h2 className={classes.title}>{ptt.charAt(0).toUpperCase() + ptt.slice(1)}</h2>
+                  <Charts data={charts[ptt.toLowerCase()]} />
+                </>
+              })}</>
+            }
+          </>
+          : <Loading />
         }
       </>
     );
