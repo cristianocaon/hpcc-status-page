@@ -51,7 +51,9 @@ const Availability = ({ partitions }) => {
               popupState.close();
             }
           }}>
-            <Typography className={classes.box} style={{ backgroundColor: partitions[partition] === 'UP' ? 'green' : 'red' }}>{partition}</Typography>
+            <Typography className={classes.box} style={{ backgroundColor: partitions[partition] === 'UP' ? 'green' : 'red' }}>
+              {partition.charAt(0).toUpperCase() + partition.slice(1)}
+            </Typography>
             <Popper {...bindPopper(popupState)} transition>
               <Paper className={classes.paper}>
                 <Typography><strong>Status</strong>: {partitions[partition]}</Typography>
