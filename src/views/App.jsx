@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import React, { useState } from 'react'
 import Header from '../components/layout/Header';
 import Content from '../components/layout/Content';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,20 +24,23 @@ const useStyles = makeStyles((theme) => ({
 const App = () => {
   const classes = useStyles();
 
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   const handleRefresh = (event) => {
     event.preventDefault();
     window.location.reload();
   }
-
   return (
     <div className="App">
-      <Router>
-        <Header />
-        <label className={classes.info}>Refreshing automatically every 2 minutes
-          <a onClick={handleRefresh}><FontAwesomeIcon icon={faSync} className={classes.icon} /></a>
-        </label>
-        <Content />
-      </Router>
+      <label className={classes.info}>Refreshing automatically every 2 minutes
+        <a onClick={handleRefresh}><FontAwesomeIcon icon={faSync} className={classes.icon} /></a>
+      </label>
+      <Header value={value} handleChange={handleChange} />
+      <Content value={value} />
     </div>
   );
 };

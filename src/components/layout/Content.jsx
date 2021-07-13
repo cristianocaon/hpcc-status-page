@@ -1,24 +1,15 @@
 import Summary from '../../views/Summary';
 import Jobs from '../../views/Jobs';
 import Nodes from '../../views/Nodes';
-import { Switch, Route } from 'react-router-dom';
 
-const Content = () => {
+const Content = ({ value }) => {
   return (
-    <div className="Content">
-      <Switch>
-        <Route path="/jobs">
-          <Jobs />
-        </Route>
-        <Route path="/nodes">
-          <Nodes />
-        </Route>
-        <Route path="/">
-          <Summary />
-        </Route>
-      </Switch>
+    <div>
+      {value === 0 ? <Summary />
+        : value === 1 ? <Jobs />
+          : <Nodes />}
     </div>
   )
 }
 
-export default Content
+export default Content;
