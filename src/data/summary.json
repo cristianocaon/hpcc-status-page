@@ -1,0 +1,300 @@
+{
+  "charts": {
+    "cc-reserved": {
+      "jobs": {
+        "%Completing": 0.0,
+        "%Other": 0.0,
+        "%Pending": 0.0,
+        "%Running": 100.0,
+        "CG": 0,
+        "OT": 0,
+        "PD": 0,
+        "R": 3,
+        "total_jobs": 3
+      },
+      "nodes": {
+        "%Down": 0.0,
+        "%Drained": 0.0,
+        "%Draining": 0.0,
+        "%Fully_Allocated": 0.0,
+        "%Idle": 0.0,
+        "%Other": 5.9,
+        "%Partially_Allocated": 5.9,
+        "%Reserved": 88.2,
+        "allocated": 0,
+        "down": 0,
+        "drained": 0,
+        "draining": 0,
+        "idle": 0,
+        "mixed": 1,
+        "other": 1,
+        "reserved": 15,
+        "total_nodes": 17
+      },
+      "usage": {
+        "%CPU_Idle": 94.4,
+        "%CPU_Other": 4.9,
+        "%CPU_Usage": 0.7,
+        "alloc_cpu": 3,
+        "idle_cpu": 389,
+        "other_cpu": 20,
+        "total_cpu": 412
+      }
+    },
+    "gpu-build": {
+      "jobs": {
+        "%Completing": 0,
+        "%Other": 0,
+        "%Pending": 0,
+        "%Running": 0,
+        "CG": 0,
+        "OT": 0,
+        "PD": 0,
+        "R": 0,
+        "total_jobs": 0
+      },
+      "nodes": {
+        "%Down": 0.0,
+        "%Drained": 0.0,
+        "%Draining": 0.0,
+        "%Fully_Allocated": 0.0,
+        "%Idle": 100.0,
+        "%Other": 0.0,
+        "%Partially_Allocated": 0.0,
+        "%Reserved": 0.0,
+        "allocated": 0,
+        "down": 0,
+        "drained": 0,
+        "draining": 0,
+        "idle": 1,
+        "mixed": 0,
+        "other": 0,
+        "reserved": 0,
+        "total_nodes": 1
+      },
+      "usage": {
+        "%CPU_Idle": 100.0,
+        "%CPU_Other": 0.0,
+        "%CPU_Usage": 0.0,
+        "alloc_cpu": 0,
+        "idle_cpu": 32,
+        "other_cpu": 0,
+        "total_cpu": 32
+      }
+    },
+    "matador": {
+      "jobs": {
+        "%Completing": 0.0,
+        "%Other": 0.0,
+        "%Pending": 35.6,
+        "%Running": 64.4,
+        "CG": 0,
+        "OT": 0,
+        "PD": 16,
+        "R": 29,
+        "total_jobs": 45
+      },
+      "nodes": {
+        "%Down": 0.0,
+        "%Drained": 0.0,
+        "%Draining": 0.0,
+        "%Fully_Allocated": 0.0,
+        "%Idle": 0.0,
+        "%Other": 0.0,
+        "%Partially_Allocated": 95.0,
+        "%Reserved": 5.0,
+        "allocated": 0,
+        "down": 0,
+        "drained": 0,
+        "draining": 0,
+        "idle": 0,
+        "mixed": 19,
+        "other": 0,
+        "reserved": 1,
+        "total_nodes": 20
+      },
+      "usage": {
+        "%CPU_Idle": 90.8,
+        "%CPU_Other": 0.0,
+        "%CPU_Usage": 9.2,
+        "alloc_cpu": 74,
+        "idle_cpu": 726,
+        "other_cpu": 0,
+        "total_cpu": 800
+      }
+    },
+    "nocona": {
+      "jobs": {
+        "%Completing": 0.0,
+        "%Other": 0.0,
+        "%Pending": 25.0,
+        "%Running": 75.0,
+        "CG": 0,
+        "OT": 0,
+        "PD": 20,
+        "R": 60,
+        "total_jobs": 80
+      },
+      "nodes": {
+        "%Down": 0.0,
+        "%Drained": 1.2,
+        "%Draining": 0.0,
+        "%Fully_Allocated": 52.9,
+        "%Idle": 41.2,
+        "%Other": 0.0,
+        "%Partially_Allocated": 2.9,
+        "%Reserved": 1.7,
+        "allocated": 127,
+        "down": 0,
+        "drained": 3,
+        "draining": 0,
+        "idle": 99,
+        "mixed": 7,
+        "other": 0,
+        "reserved": 4,
+        "total_nodes": 240
+      },
+      "usage": {
+        "%CPU_Idle": 43.9,
+        "%CPU_Other": 1.2,
+        "%CPU_Usage": 54.9,
+        "alloc_cpu": 16857,
+        "idle_cpu": 13479,
+        "other_cpu": 384,
+        "total_cpu": 30720
+      }
+    },
+    "quanah": {
+      "jobs": {
+        "%Completing": 0.0,
+        "%Other": 0.0,
+        "%Pending": 41.8,
+        "%Running": 58.2,
+        "CG": 0,
+        "OT": 0,
+        "PD": 276,
+        "R": 384,
+        "total_jobs": 660
+      },
+      "nodes": {
+        "%Down": 0.0,
+        "%Drained": 1.1,
+        "%Draining": 0.0,
+        "%Fully_Allocated": 86.7,
+        "%Idle": 0.0,
+        "%Other": 0.0,
+        "%Partially_Allocated": 9.2,
+        "%Reserved": 3.0,
+        "allocated": 405,
+        "down": 0,
+        "drained": 5,
+        "draining": 0,
+        "idle": 0,
+        "mixed": 43,
+        "other": 0,
+        "reserved": 14,
+        "total_nodes": 467
+      },
+      "usage": {
+        "%CPU_Idle": 9.3,
+        "%CPU_Other": 1.1,
+        "%CPU_Usage": 89.6,
+        "alloc_cpu": 15061,
+        "idle_cpu": 1571,
+        "other_cpu": 180,
+        "total_cpu": 16812
+      }
+    },
+    "toreador": {
+      "jobs": {
+        "%Completing": 0.0,
+        "%Other": 0.0,
+        "%Pending": 17.5,
+        "%Running": 82.5,
+        "CG": 0,
+        "OT": 0,
+        "PD": 7,
+        "R": 33,
+        "total_jobs": 40
+      },
+      "nodes": {
+        "%Down": 0.0,
+        "%Drained": 0.0,
+        "%Draining": 0.0,
+        "%Fully_Allocated": 0.0,
+        "%Idle": 0.0,
+        "%Other": 0.0,
+        "%Partially_Allocated": 100.0,
+        "%Reserved": 0.0,
+        "allocated": 0,
+        "down": 0,
+        "drained": 0,
+        "draining": 0,
+        "idle": 0,
+        "mixed": 11,
+        "other": 0,
+        "reserved": 0,
+        "total_nodes": 11
+      },
+      "usage": {
+        "%CPU_Idle": 62.5,
+        "%CPU_Other": 0.0,
+        "%CPU_Usage": 37.5,
+        "alloc_cpu": 66,
+        "idle_cpu": 110,
+        "other_cpu": 0,
+        "total_cpu": 176
+      }
+    },
+    "total": {
+      "jobs": {
+        "%Completing": 0.0,
+        "%Other": 0.0,
+        "%Pending": 38.5,
+        "%Running": 61.5,
+        "CG": 0,
+        "OT": 0,
+        "PD": 319,
+        "R": 509,
+        "total_jobs": 828
+      },
+      "nodes": {
+        "%Down": 0.0,
+        "%Drained": 1.1,
+        "%Draining": 0.0,
+        "%Fully_Allocated": 70.4,
+        "%Idle": 13.2,
+        "%Other": 0.1,
+        "%Partially_Allocated": 10.7,
+        "%Reserved": 4.5,
+        "allocated": 532,
+        "down": 0,
+        "drained": 8,
+        "draining": 0,
+        "idle": 100,
+        "mixed": 81,
+        "other": 1,
+        "reserved": 34,
+        "total_nodes": 756
+      },
+      "usage": {
+        "%CPU_Idle": 33.3,
+        "%CPU_Other": 1.2,
+        "%CPU_Usage": 65.5,
+        "alloc_cpu": 32061,
+        "idle_cpu": 16307,
+        "other_cpu": 584,
+        "total_cpu": 48952
+      }
+    }
+  },
+  "error": "",
+  "partitions": {
+    "cc-reserved": "UP",
+    "gpu-build": "UP",
+    "matador": "UP",
+    "nocona": "UP",
+    "quanah": "UP",
+    "toreador": "UP"
+  }
+}
