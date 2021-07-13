@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     fontFamily: 'Roboto',
-    margin: '10px',
+    margin: '20px',
   },
   error: {
     display: 'flex',
@@ -50,7 +50,7 @@ const Summary = () => {
   }
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 2000)
+    setTimeout(() => setLoading(false), 1000)
   }, [])
 
   if (!('error' in summaryInfo)) {
@@ -62,7 +62,7 @@ const Summary = () => {
     partitionFields.push('All');
 
     return (
-      <>
+      <div>
         {!loading ?
           <>
             <h2 className={classes.title}>Partition Status</h2>
@@ -87,7 +87,7 @@ const Summary = () => {
           </>
           : <Loading />
         }
-      </>
+      </div>
     );
   } else {
     return <Alert severity="error"

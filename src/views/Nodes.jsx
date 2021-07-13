@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    margin: '10px',
+    margin: '20px',
   },
 }));
 
@@ -26,11 +26,11 @@ const Nodes = () => {
   }
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 2000)
+    setTimeout(() => setLoading(false), 1000)
   }, [])
 
   return (
-    <>
+    <div>
       {!loading ?
         <div>
           <Legend />
@@ -43,7 +43,7 @@ const Nodes = () => {
         </div>
         : <Loading />
       }
-    </>
+    </div>
   );
 }
 

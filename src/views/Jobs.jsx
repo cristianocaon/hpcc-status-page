@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    margin: '10px',
+    margin: '20px',
   },
   formControl: {
     margin: theme.spacing(1),
@@ -55,7 +55,7 @@ const Jobs = () => {
   }
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 2000)
+    setTimeout(() => setLoading(false), 1000)
   }, [])
 
   let fields = undefined;
@@ -86,7 +86,7 @@ const Jobs = () => {
     });
 
     return (
-      <>
+      <div>
         {!loading ?
           <div>
             <div className={classes.root}>
@@ -110,7 +110,7 @@ const Jobs = () => {
           </div>
           : <Loading />
         }
-      </>
+      </div>
     );
   } else {
     return <Alert severity="error"

@@ -5,7 +5,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flex_direction: 'row',
     justifyContent: 'center',
-    margin: '0.5em',
+    margin: '20px',
     alignContent: 'center',
     '& span': {
       fontFamily: 'Roboto, sans-serif',
