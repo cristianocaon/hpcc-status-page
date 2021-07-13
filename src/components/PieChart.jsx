@@ -32,6 +32,13 @@ const PieChart = ({ data }) => {
           },
           maintainAspectRatio: false,
           plugins: {
+            legend: {
+              labels: {
+                font: {
+                  size: 13,
+                }
+              }
+            },
             datalabels: {
               color: '#fff',
               anchor: 'end',
@@ -45,7 +52,7 @@ const PieChart = ({ data }) => {
               },
               font: {
                 weight: 'bold',
-                size: '10'
+                size: '12'
               },
               formatter: (value, ctx) => {
                 let sum = 0;
