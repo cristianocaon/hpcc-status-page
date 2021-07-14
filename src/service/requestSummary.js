@@ -1,4 +1,4 @@
-const { charts, error, partitions } = require('../data/summary.json')
+// const { charts, error, partitions } = require('../data/summary.json')
 
 const PROTO = 'http://';
 const ADDR = 'scarlet.hpcc.ttu.edu';
@@ -8,8 +8,11 @@ const URL = PROTO + ADDR + ':' + PORT + '/slurm-web/summary';
 const requestSummary = () => {
   fetch(URL)
     .then(res => res.json())
-    .then(data => console.log(data));
-  return !error ? { charts, partitions } : { charts, partitions, error };
+    .then(data => {
+      const { charts, error, partitions } = data;
+      return !error ? { charts, partitions } : { charts, partitions, error };
+    })
+    .catch(err => console.log("Fetch error: " + err.message));
 }
 
 export default requestSummary;
