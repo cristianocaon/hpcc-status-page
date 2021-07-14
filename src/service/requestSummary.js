@@ -18,6 +18,7 @@ const requestSummary = () => {
       console.log("Fetch error: " + err.message)
       return {};
     });
+  console.log(res);
   return res;
 }
 
