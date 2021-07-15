@@ -38,63 +38,70 @@ const useStyles = makeStyles((theme) => ({
 
 export let partitionItems = [];
 
-const summaryInfo = requestSummary();
-
 const Summary = () => {
   const classes = useStyles();
   const [partition, setPartition] = useState("Total");
   const [loading, setLoading] = useState(true);
+  const [data, setData] = useState({})
+  const [error, setError] = useState(null)
+  const [partitionFields, setPartitionFields] = useState([]);
 
   const handlePartitionSelection = (event) => {
     setPartition(event.target.innerText);
   }
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000)
+    requestSummary(setData, setLoading, setError);
+    const interval = setInterval(() => requestSummary(setData, setLoading, setError), 1000 * 60 * 2);
+    return () => clearInterval(interval);
   }, [])
 
-  if (!('error' in summaryInfo)) {
-    let { charts, partitions } = summaryInfo;
+  useEffect(() => {
+    if (data.partitions) {
+      setPartitionFields(Object.keys(data.partitions));
+    }
+  }, [data]);
 
-    let partitionFields = Object.keys(partitions);
+  useEffect(() => {
+    console.log(partitionFields)
     partitionItems = [...partitionFields];
     partitionFields.unshift('Total');
     partitionFields.push('All');
+  }, [partitionFields]);
 
+  if (!error) {
+    if (loading) return <Loading />
     return (
-      <div>
-        {!loading ?
-          <>
-            <h2 className={classes.title}>Partition Status</h2>
-            <Availability partitions={partitions} />
-            <Divider />
-            <div className={classes.filterContainer}>
-              <Filter title="Partition"
-                partitions={partitionFields}
-                onClick={handlePartitionSelection}
-              />
-            </div>
-            {partition !== 'All'
-              ? <><h2 className={classes.title}>{partition}</h2>
-                <Charts data={charts[partition.toLowerCase()]} /></>
-              : <>{partitionItems.map(ptt => {
-                return <>
-                  <h2 className={classes.title}>{ptt.charAt(0).toUpperCase() + ptt.slice(1)}</h2>
-                  <Charts data={charts[ptt.toLowerCase()]} />
-                </>
-              })}</>
-            }
-          </>
-          : <Loading />
+      <>
+        <h2 className={classes.title}>Partition Status</h2>
+        <Availability partitions={data.partitions} />
+        <Divider />
+        <div className={classes.filterContainer}>
+          <Filter title="Partition"
+            partitions={partitionFields}
+            onClick={handlePartitionSelection}
+          />
+        </div>
+        {partition !== 'All'
+          ? <><h2 className={classes.title}>{partition}</h2>
+            <Charts data={data.charts[partition.toLowerCase()]} /></>
+          : <>{partitionItems.map(ptt => {
+            return <>
+              <h2 className={classes.title}>{ptt.charAt(0).toUpperCase() + ptt.slice(1)}</h2>
+              <Charts data={data.charts[ptt.toLowerCase()]} />
+            </>
+          })}</>
         }
-      </div>
+      </>
     );
   } else {
-    return <Alert severity="error"
-      className={classes.error}>
-      <AlertTitle>Error</AlertTitle>'
-      {summaryInfo.error}'
-    </Alert>
+    return (
+      <Alert severity="error"
+        className={classes.error}>
+        <AlertTitle>Error</AlertTitle>
+        '{error}'
+      </Alert>
+    )
   }
 }
 

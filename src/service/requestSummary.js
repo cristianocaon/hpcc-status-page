@@ -1,25 +1,24 @@
-// const { charts, error, partitions } = require('../data/summary.json')
+import axios from 'axios'
 
 const PROTO = 'http://';
 const ADDR = 'scarlet.hpcc.ttu.edu';
 const PORT = '80';
 const URL = PROTO + ADDR + ':' + PORT + '/slurm-web/summary';
 
-const requestSummary = () => {
-  const res = fetch(URL)
-    .then(res => res.json())
-    .then(data => {
-      console.log("Success!")
-      console.log(data)
-      const { charts, error, partitions } = data;
-      return !error ? { charts, partitions } : { charts, partitions, error };
-    })
-    .catch(err => {
-      console.log("Fetch error: " + err.message)
-      return {};
-    });
-  console.log(res);
-  return res;
-}
+const requestSummary = async (setData, setLoading, setError) => {
+  try {
+    const { data } = await axios.get(URL)
+    if (!data.error) {
+      let { charts, partitions } = data;
+      setData({ charts, partitions });
+      console.log(data);
+    } else {
+      setError(data.error);
+    }
+    setLoading(false);
+  } catch (err) {
+    console.error(err.message);
+  }
+};
 
 export default requestSummary;
