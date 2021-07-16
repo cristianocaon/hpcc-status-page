@@ -3,11 +3,13 @@ import Header from '../components/layout/Header';
 import Content from '../components/layout/Content';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
+import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   info: {
     display: 'flex',
+    alignItems: 'center',
     justifyContent: 'center',
     fontFamily: 'Roboto',
     margin: '10px',
@@ -37,7 +39,7 @@ const App = () => {
   return (
     <div className="App">
       <label className={classes.info}>Refreshing automatically every 2 minutes
-        <a onClick={handleRefresh}><FontAwesomeIcon icon={faSync} className={classes.icon} /></a>
+        <IconButton size="small" onClick={handleRefresh} className={classes.icon}><FontAwesomeIcon icon={faSync} /></IconButton>
       </label>
       <Header value={value} handleChange={handleChange} />
       <Content value={value} />
