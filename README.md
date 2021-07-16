@@ -2,7 +2,7 @@
 
 ## Description
 
-Frontend implementation portion of the  of the Slurm Status Page for the HPCC (High Performance Computing Center) at Texas Tech University. 
+Frontend implementation of Slurm Status Page for the HPCC (High Performance Computing Center) at Texas Tech University. The project was implemented using React.js in communication with the slurm-web API for the monitoring data. 
 
 ## Objective
 To provide better monitoring and visualization capabilities through graphs and tables to replace old CLI system for users.
