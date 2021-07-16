@@ -7,7 +7,7 @@ import Divider from '@material-ui/core/Divider';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 
-import requestSummary from '../service/requestSummary';
+import getSummary from '../service/getSummary';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,8 +51,8 @@ const Summary = () => {
   }
 
   useEffect(() => {
-    requestSummary(setData, setLoading, setError);
-    const interval = setInterval(() => requestSummary(setData, setLoading, setError), 1000 * 60 * 2);
+    getSummary(setData, setLoading, setError);
+    const interval = setInterval(() => getSummary(setData, setLoading, setError), 1000 * 60 * 2);
     return () => clearInterval(interval);
   }, [])
 

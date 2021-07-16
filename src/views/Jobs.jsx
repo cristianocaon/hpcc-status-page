@@ -6,8 +6,7 @@ import { Alert, AlertTitle } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { partitionItems } from '../views/Summary';
-import requestJobs from '../service/requestJobs';
-import { DatasetController } from 'chart.js';
+import getJobs from '../service/getJobs';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,8 +59,8 @@ const Jobs = () => {
   }
 
   useEffect(() => {
-    requestJobs(setData, setLoading, setError);
-    const interval = setInterval(() => requestJobs(setData, setLoading, setError), 1000 * 60 * 2);
+    getJobs(setData, setLoading, setError);
+    const interval = setInterval(() => getJobs(setData, setLoading, setError), 1000 * 60 * 2);
     return () => clearInterval(interval);
   }, [])
 
@@ -93,33 +92,8 @@ const Jobs = () => {
     }
   }, [data])
 
-  // let fields = undefined;
-  // let data = undefined;
-
   if (!error) {
     if (loading) return <Loading />
-    // let { jobs } = data;
-    // fields = Object.keys(jobs[0]).filter(job => {
-    //   return job !== 'nodelist';
-    // }).map(column => {
-    //   let header = column.toUpperCase();
-    //   let width = column.length < 6 ? 110 : column.length < 7 ? 120 : column.length < 9 ? 140 : 150;
-    //   if (column === 'jobid') {
-    //     column = 'id';
-    //     header = 'JOBID';
-    //   }
-    //   return ({
-    //     field: column,
-    //     headerName: header,
-    //     width: width,
-    //   });
-    // });
-
-    // data = jobs.map(obj => {
-    //   let { jobid, ...data } = obj;
-    //   data["id"] = jobid;
-    //   return data;
-    // });
 
     return (
       <div>
