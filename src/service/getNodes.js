@@ -12,9 +12,6 @@ const getNodes = async (setData, setLoading, setError, partition) => {
       URL += '?partition=' + partition.toLowerCase();
     }
     const { data } = await axios.get(URL)
-    console.log(data)
-    console.log(URL)
-    console.log(partition)
     if (!data.error) {
       setData(data.nodes);
     } else {
