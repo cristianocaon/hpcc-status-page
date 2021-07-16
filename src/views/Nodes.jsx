@@ -35,10 +35,10 @@ const Nodes = () => {
   }
 
   useEffect(() => {
-    getNodes(setData, setLoading, setError);
-    const interval = setInterval(() => getNodes(setData, setLoading, setError), 1000 * 60 * 2);
+    getNodes(setData, setLoading, setError, partition);
+    const interval = setInterval(() => getNodes(setData, setLoading, setError, partition), 1000 * 60 * 2);
     return () => clearInterval(interval);
-  }, [])
+  }, [partition])
 
   if (!error) {
     if (loading) return <Loading />

@@ -59,10 +59,27 @@ const Jobs = () => {
   }
 
   useEffect(() => {
-    getJobs(setData, setLoading, setError);
-    const interval = setInterval(() => getJobs(setData, setLoading, setError), 1000 * 60 * 2);
+    let tempStatus;
+    switch (status) {
+      case 'Running':
+        tempStatus = 'R';
+        break;
+      case 'Pending':
+        tempStatus = 'PD';
+        break;
+      case 'Completing':
+        tempStatus = 'CG';
+        break;
+      case 'None':
+        tempStatus = '';
+        break;
+      default:
+        tempStatus = '';
+    }
+    getJobs(setData, setLoading, setError, partition === 'All' ? '' : partition.toLowerCase(), tempStatus);
+    const interval = setInterval(() => getJobs(setData, setLoading, setError, partition.toLowerCase(), tempStatus), 1000 * 60 * 2);
     return () => clearInterval(interval);
-  }, [])
+  }, [partition, status])
 
   useEffect(() => {
     if (data) {

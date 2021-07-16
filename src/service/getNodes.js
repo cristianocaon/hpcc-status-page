@@ -3,15 +3,22 @@ import axios from 'axios'
 const PROTO = 'http://';
 const ADDR = 'scarlet.hpcc.ttu.edu';
 const PORT = '80';
-const URL = PROTO + ADDR + ':' + PORT + '/slurm-web/nodes';
 
-const getNodes = async (setData, setLoading, setError) => {
+const getNodes = async (setData, setLoading, setError, partition) => {
+  let URL = PROTO + ADDR + ':' + PORT + '/slurm-web/nodes';
+
   try {
+    if (partition !== 'All') {
+      URL += '?partition=' + partition.toLowerCase();
+    }
     const { data } = await axios.get(URL)
+    console.log(data)
+    console.log(URL)
+    console.log(partition)
     if (!data.error) {
       setData(data.nodes);
     } else {
-      setError(data.errors);
+      setError(data.error);
     }
     setLoading(false);
   } catch (err) {
