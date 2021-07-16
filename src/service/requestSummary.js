@@ -11,7 +11,6 @@ const requestSummary = async (setData, setLoading, setError) => {
     if (!data.error) {
       let { charts, partitions } = data;
       setData({ charts, partitions });
-      console.log(data);
     } else {
       setError(data.error);
     }

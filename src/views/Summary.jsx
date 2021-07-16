@@ -63,7 +63,6 @@ const Summary = () => {
   }, [data]);
 
   useEffect(() => {
-    console.log(partitionFields)
     partitionItems = [...partitionFields];
     partitionFields.unshift('Total');
     partitionFields.push('All');
