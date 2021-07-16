@@ -5,7 +5,7 @@ const ADDR = 'scarlet.hpcc.ttu.edu';
 const PORT = '80';
 const URL = PROTO + ADDR + ':' + PORT + '/slurm-web/summary';
 
-const requestSummary = async (setData, setLoading, setError) => {
+const getSummary = async (setData, setLoading, setError) => {
   try {
     const { data } = await axios.get(URL)
     if (!data.error) {
@@ -20,4 +20,4 @@ const requestSummary = async (setData, setLoading, setError) => {
   }
 };
 
-export default requestSummary;
+export default getSummary;
