@@ -58,14 +58,16 @@ const Summary = () => {
 
   useEffect(() => {
     if (data.partitions) {
-      setPartitionFields(Object.keys(data.partitions));
+      let temp = Object.keys(data.partitions);
+      temp.unshift('All');
+      temp.unshift('Total');
+      setPartitionFields(temp);
     }
   }, [data]);
 
   useEffect(() => {
     partitionItems = [...partitionFields];
-    partitionFields.unshift('Total');
-    partitionFields.push('All');
+    partitionItems.shift();
   }, [partitionFields]);
 
   if (!error) {
@@ -84,7 +86,7 @@ const Summary = () => {
         {partition !== 'All'
           ? <><h2 className={classes.title}>{partition}</h2>
             <Charts data={data.charts[partition.toLowerCase()]} /></>
-          : <>{partitionItems.map(ptt => {
+          : <>{partitionItems.filter(el => { return el !== 'All' }).map(ptt => {
             return <>
               <h2 className={classes.title}>{ptt.charAt(0).toUpperCase() + ptt.slice(1)}</h2>
               <Charts data={data.charts[ptt.toLowerCase()]} />
