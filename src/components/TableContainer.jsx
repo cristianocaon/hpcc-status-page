@@ -27,9 +27,9 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const TableContainer = ({ data }) => {
+const TableContainer = ({ data, page, handlePage }) => {
   const classes = useStyles();
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
 
   let rackNums = Object.keys(data).sort((a, b) => {
     let n1 = parseInt(a.split('_')[1]);
@@ -66,7 +66,7 @@ const TableContainer = ({ data }) => {
         page={page}
         count={rackNums.length}
         variant="outlined"
-        onChange={(event, page) => setPage(page)} />
+        onChange={(event, page) => handlePage(page)} />
     </Paper>
   )
 }

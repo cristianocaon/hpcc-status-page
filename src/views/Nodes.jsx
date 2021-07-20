@@ -29,9 +29,15 @@ const Nodes = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({})
   const [error, setError] = useState(null)
+  const [page, setPage] = useState(1);
 
   const handlePartitionSelection = (event) => {
     setPartition(event.target.innerText);
+    setPage(1);
+  }
+
+  const handlePage = (page) => {
+    setPage(page);
   }
 
   useEffect(() => {
@@ -50,7 +56,7 @@ const Nodes = () => {
             partitions={partitionItems}
             onClick={handlePartitionSelection} />
         </div>
-        <TableContainer data={data} />
+        <TableContainer data={data} page={page} handlePage={handlePage} />
       </div>
     );
   } else {
