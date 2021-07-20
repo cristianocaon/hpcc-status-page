@@ -65,7 +65,9 @@ const Jobs = () => {
   }, [partition, status])
 
   useEffect(() => {
-    if (data && data.length > 0 && !message) {
+    if (data && data.length > 0) {
+      setMessage('');
+
       let columnInfo = Object.keys(data[0]).filter(key => {
         return key !== 'nodelist';
       }).map(column => {
@@ -89,13 +91,12 @@ const Jobs = () => {
         return data;
       });
       setRows(rowData);
+    } else {
+      setMessage('No jobs currently running.');
+      setFields([]);
+      setRows([]);
     }
   }, [data])
-
-  useEffect(() => {
-    if (data && data.length === 0) setMessage('No jobs currently running.');
-    else setMessage('');
-  }, [data]);
 
   if (!message && !error) {
     if (loading) return <Loading />
