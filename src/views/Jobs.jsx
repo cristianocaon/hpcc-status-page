@@ -91,7 +91,7 @@ const Jobs = () => {
         return data;
       });
       setRows(rowData);
-    } else {
+    } else if (!loading) {
       setMessage('No jobs currently running.');
       setFields([]);
       setRows([]);
