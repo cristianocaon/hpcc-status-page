@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import NodeTable from './NodeTable';
 import Paper from '@material-ui/core/Paper';
 import Pagination from '@material-ui/lab/Pagination';
@@ -29,7 +28,6 @@ const useStyles = makeStyles(() => ({
 
 const TableContainer = ({ data, page, handlePage }) => {
   const classes = useStyles();
-  // const [page, setPage] = useState(1);
 
   let rackNums = Object.keys(data).sort((a, b) => {
     let n1 = parseInt(a.split('_')[1]);
