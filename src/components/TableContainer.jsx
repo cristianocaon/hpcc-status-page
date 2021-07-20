@@ -38,7 +38,7 @@ const TableContainer = ({ data }) => {
     if (n1 > n2) return 1;
     return 0;
   }).reduce((resultArray, item, index) => {
-    const chunkIndex = Math.floor(index / 5)
+    const chunkIndex = Math.floor(index / 4)
     if (!resultArray[chunkIndex]) {
       resultArray[chunkIndex] = []
     }
