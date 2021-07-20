@@ -30,14 +30,13 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
-  errors: {
+  alert: {
     display: 'flex',
+    marginTop: '5px',
     justifyContent: 'center',
     fontFamily: 'Roboto',
   }
 }));
-
-// const jobsInfo = requestJobs();
 
 const Jobs = () => {
   const classes = useStyles();
@@ -47,6 +46,7 @@ const Jobs = () => {
   const [status, setStatus] = useState("");
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState("");
   const [fields, setFields] = useState();
   const [rows, setRows] = useState();
 
@@ -59,30 +59,13 @@ const Jobs = () => {
   }
 
   useEffect(() => {
-    let tempStatus;
-    switch (status) {
-      case 'Running':
-        tempStatus = 'R';
-        break;
-      case 'Pending':
-        tempStatus = 'PD';
-        break;
-      case 'Completing':
-        tempStatus = 'CG';
-        break;
-      case 'None':
-        tempStatus = '';
-        break;
-      default:
-        tempStatus = '';
-    }
-    getJobs(setData, setLoading, setError, partition === 'All' ? '' : partition.toLowerCase(), tempStatus);
-    const interval = setInterval(() => getJobs(setData, setLoading, setError, partition.toLowerCase(), tempStatus), 1000 * 60 * 2);
+    getJobs(setData, setLoading, setError, partition, status);
+    const interval = setInterval(() => getJobs(setData, setLoading, setError, partition, status), 1000 * 60 * 2);
     return () => clearInterval(interval);
   }, [partition, status])
 
   useEffect(() => {
-    if (data) {
+    if (data && data.length > 0 && !message) {
       let columnInfo = Object.keys(data[0]).filter(key => {
         return key !== 'nodelist';
       }).map(column => {
@@ -109,9 +92,13 @@ const Jobs = () => {
     }
   }, [data])
 
-  if (!error) {
-    if (loading) return <Loading />
+  useEffect(() => {
+    if (data && data.length === 0) setMessage('No jobs currently running.');
+    else setMessage('');
+  }, [data]);
 
+  if (!message && !error) {
+    if (loading) return <Loading />
     return (
       <div>
         <div className={classes.root}>
@@ -134,13 +121,40 @@ const Jobs = () => {
         </div>
       </div>
     );
-  } else {
+  } else if (error) {
     return (
-      <Alert severity="error"
-        className={classes.errors}>
-        <AlertTitle>Error</AlertTitle>
-        '{error}'
-      </Alert>
+      <>
+        <Alert severity="error"
+          className={classes.alert}>
+          <AlertTitle>Error</AlertTitle>
+          '{error}'
+        </Alert>
+        <div className={classes.filterContainer}>
+          <Filter title="Partition"
+            partitions={partitionItems}
+            onClick={handlePartitionSelection}
+          />
+          <Filter title="Status"
+            onClick={handleStatusSelection} />
+        </div>
+      </>
+    )
+  } else if (message) {
+    return (
+      <>
+        <Alert severity="info"
+          className={classes.alert}>
+          <AlertTitle>{message}</AlertTitle>
+        </Alert>
+        <div className={classes.filterContainer}>
+          <Filter title="Partition"
+            partitions={partitionItems}
+            onClick={handlePartitionSelection}
+          />
+          <Filter title="Status"
+            onClick={handleStatusSelection} />
+        </div>
+      </>
     )
   }
 }
