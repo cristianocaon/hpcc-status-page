@@ -114,7 +114,7 @@ const Jobs = () => {
           <DataGrid
             rows={rows}
             columns={fields}
-            pageSize={8}
+            pageSize={100}
             autoHeight={true}
             disableColumnMenu={true}
             disableSelectionOnClick={true}
