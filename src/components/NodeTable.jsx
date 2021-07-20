@@ -5,14 +5,14 @@ const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
+    margin: '1rem',
     alignItems: 'center',
   },
   table: {
     border: '3px solid #4c514f',
     borderCollapse: 'separate',
-    margin: '5px',
     tableLayout: 'fixed',
-    width: '275px'
+    width: '300px',
   },
   title: {
     fontFamily: 'Roboto, sans-serif',
