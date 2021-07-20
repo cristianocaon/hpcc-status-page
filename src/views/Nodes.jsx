@@ -18,6 +18,7 @@ const useStyles = makeStyles(() => ({
   },
   errors: {
     display: 'flex',
+    marginTop: '5px',
     justifyContent: 'center',
     fontFamily: 'Roboto',
   }
