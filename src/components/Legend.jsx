@@ -25,15 +25,15 @@ const Legend = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <span className={classes.dot} style={{ backgroundColor: '#78AD32' }}></span><span> Allocated </span>
-      <span className={classes.dot} style={{ backgroundColor: '#E98B15' }}></span><span> Idle </span>
-      <span className={classes.dot} style={{ backgroundColor: '#3D6171' }}></span><span>  Drained </span>
-      <span className={classes.dot} style={{ backgroundColor: '#9AAB99' }}></span><span> Draining </span>
-      <span className={classes.dot} style={{ backgroundColor: '#DC391A' }}></span><span> Down </span>
-      <span className={classes.dot} style={{ backgroundColor: '#463C3E' }}></span><span> Reserved </span>
-      <span className={classes.dot} style={{ backgroundColor: '#166137' }}></span><span> Mix</span>
-      <span className={classes.dot} style={{ backgroundColor: '#b9b7bd' }}></span><span> Empty</span>
-      <span className={classes.dot} style={{ backgroundColor: '#313628' }}></span><span> Other</span>
+      <span className={classes.dot} style={{ backgroundColor: '#2A4D14' }}></span><span> Fully Allocated </span>
+      <span className={classes.dot} style={{ backgroundColor: '#8EF9F3' }}></span><span> Idle </span>
+      <span className={classes.dot} style={{ backgroundColor: '#613DC1' }}></span><span> Drained </span>
+      <span className={classes.dot} style={{ backgroundColor: '#4E148C' }}></span><span> Draining </span>
+      <span className={classes.dot} style={{ backgroundColor: '#FF1B1C' }}></span><span> Down </span>
+      <span className={classes.dot} style={{ backgroundColor: '#FFD60A' }}></span><span> Reserved </span>
+      <span className={classes.dot} style={{ backgroundColor: '#29BF12' }}></span><span> Partially Allocated </span>
+      <span className={classes.dot} style={{ backgroundColor: '#E7E5DF' }}></span><span> Empty </span>
+      <span className={classes.dot} style={{ backgroundColor: '#393E41' }}></span><span> Other </span>
     </div>
   )
 }

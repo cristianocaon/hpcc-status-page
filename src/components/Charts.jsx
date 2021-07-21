@@ -24,34 +24,35 @@ const useStyles = makeStyles((theme) => ({
   },
   error: {
     margin: '50px',
-    // textAlign: 'center',
   }
 }));
 
-const Charts = ({ data }) => {
+const Charts = ({ data, partition }) => {
   const classes = useStyles();
 
-  const [usageLabels, usageValues] = parseSummaryData(data.usage)
-  const [jobLabels, jobValues] = parseSummaryData(data.jobs)
-  const [nodeLabels, nodeValues] = parseSummaryData(data.nodes)
+  let temp = partition.toLowerCase();
 
-  const usageConfig = chartConfig(usageLabels, usageValues);
-  const jobConfig = chartConfig(jobLabels, jobValues);
-  const nodeConfig = chartConfig(nodeLabels, nodeValues);
+  const [usageLabels, usageValues] = parseSummaryData(data[temp]["usage"])
+  const [jobLabels, jobValues] = parseSummaryData(data[temp]["jobs"])
+  const [nodeLabels, nodeValues] = parseSummaryData(data[temp]["nodes"])
+
+  const usageConfig = chartConfig("usage", usageLabels, usageValues);
+  const jobConfig = chartConfig("job", jobLabels, jobValues);
+  const nodeConfig = chartConfig("node", nodeLabels, nodeValues);
 
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
-        <label className={classes.title}><strong>Usage</strong></label>
-        {usageValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={usageConfig} /> : <Typography className={classes.error}>No usage information available</Typography>}
+        <label className={classes.title}><strong>Cluster Utilization</strong></label>
+        {usageValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={usageConfig} isUsage={true} /> : <Typography className={classes.error}>No utilization information available</Typography>}
       </Card>
       <Card className={classes.card}>
         <label className={classes.title}><strong>Job Status</strong></label>
-        {jobValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={jobConfig} /> : <Typography className={classes.error}>No jobs currently running</Typography>}
+        {jobValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={jobConfig} isUsage={false} /> : <Typography className={classes.error}>No jobs currently running</Typography>}
       </Card>
       <Card className={classes.card}>
         <label className={classes.title}><strong>Node Status</strong></label>
-        {nodeValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={nodeConfig} /> : <Typography className={classes.error}>No status information available</Typography>}
+        {nodeValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={nodeConfig} isUsage={false} /> : <Typography className={classes.error}>No status information available</Typography>}
       </Card>
     </div>
   );

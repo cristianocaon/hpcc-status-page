@@ -34,15 +34,15 @@ const useStyles = makeStyles({
 
 const NodeCell = ({ children, info, colSpan }) => {
   const generateStateColor = (status) => {
-    if (status === 'allocated') return '#78AD32';
-    else if (status === 'drained') return '#3D6171';
-    else if (status === 'idle') return '#E98B15';
-    else if (status === 'draining') return '#9AAB99';
-    else if (status === 'down*') return '#DC391A';
-    else if (status === 'reserved') return '#463C3E';
-    else if (status === 'mixed') return '#166137';
-    else if (status === 'empty') return '#b9b7bd';
-    else return '#313628';
+    if (status === 'allocated') return '#2A4D14';
+    else if (status === 'idle') return '#8EF9F3';
+    else if (status === 'drained') return '#613DC1';
+    else if (status === 'draining') return '#4E148C';
+    else if (status === 'down*') return '#FF1B1C';
+    else if (status === 'reserved') return '#FFD60A';
+    else if (status === 'mixed') return '#29BF12';
+    else if (status === 'empty') return '#E7E5DF';
+    else return '#393E41';
   }
 
   const styleProps = { backgroundColor: generateStateColor(info.status) };
