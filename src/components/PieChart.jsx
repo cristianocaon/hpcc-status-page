@@ -2,7 +2,7 @@ import { Chart } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-const PieChart = ({ data }) => {
+const PieChart = ({ data, isUsage }) => {
   Chart.register(ChartDataLabels);
   Chart.defaults.set('plugins.datalabels', {
     color: '#FE777B'
@@ -39,6 +39,19 @@ const PieChart = ({ data }) => {
                 }
               }
             },
+            tooltip: {
+              callbacks: {
+                label: function (tooltipItem, data) {
+                  let label = tooltipItem.label;
+                  let value = tooltipItem.dataset.data[tooltipItem.dataIndex];
+                  if (isUsage) {
+                    if (label === "Utilized") label = "CPU Usage"
+                    else if (label === "Idle") label = "CPU Idle"
+                  }
+                  return label + ": " + value;
+                }
+              }
+            },
             datalabels: {
               color: '#fff',
               anchor: 'end',
@@ -62,7 +75,8 @@ const PieChart = ({ data }) => {
               },
             }
           },
-        }}
+        }
+        }
       />
     </div>
   );
