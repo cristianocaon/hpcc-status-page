@@ -5,17 +5,17 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flex_direction: 'row',
     justifyContent: 'center',
-    margin: '20px',
+    margin: '2rem',
     alignContent: 'center',
     '& span': {
       fontFamily: 'Roboto, sans-serif',
-      margin: '0.5em',
+      margin: '0.5rem',
       justifyContent: 'center',
     },
   },
   dot: {
-    height: '15px',
-    width: '15px',
+    height: '20px',
+    width: '20px',
     borderRadius: '50%',
     display: 'inline-block',
   }

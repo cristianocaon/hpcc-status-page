@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: '1em',
+    margin: '1rem',
     alignContent: 'center',
     overflowX: 'auto',
     overflowY: 'hidden'
@@ -18,11 +18,11 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    margin: '1em',
+    margin: '0.5rem',
     alignContent: 'center'
   },
   pagination: {
-    marginBottom: '20px',
+    marginBottom: '2rem',
   },
 }));
 

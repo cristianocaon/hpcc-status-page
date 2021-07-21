@@ -13,8 +13,10 @@ const useStyles = makeStyles({
     backgroundColor: props.backgroundColor,
     color: '#fff',
     fontFamily: 'Roboto',
-    fontSize: '0.4rem',
-    padding: '1em',
+    '& p': {
+      fontSize: '0.7em',
+    },
+    padding: '0.5rem',
     border: '0.5px solid #3d403f',
     textAlign: 'center',
     '&:hover': {
@@ -24,10 +26,10 @@ const useStyles = makeStyles({
     }
   }),
   paper: {
-    padding: '10px',
+    padding: '1rem',
   },
   text: {
-    fontFamily: 'Roboto,,ans-serif',
+    fontFamily: 'Roboto, sans-serif',
     fontSize: '0.7rem',
   }
 })

@@ -11,19 +11,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    marginBottom: '30px'
+    marginBottom: '3rem'
   },
   title: {
     display: 'flex',
     justifyContent: 'center',
     fontFamily: 'Roboto',
-    margin: '10px',
+    margin: '1rem',
   },
   card: {
-    margin: '5px',
+    margin: '0.5rem',
   },
   error: {
-    margin: '50px',
+    margin: '5rem',
   }
 }));
 

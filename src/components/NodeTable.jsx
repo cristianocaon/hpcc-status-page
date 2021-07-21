@@ -12,14 +12,14 @@ const useStyles = makeStyles(() => ({
     border: '3px solid #4c514f',
     borderCollapse: 'separate',
     tableLayout: 'fixed',
-    width: '300px',
+    width: '20rem',
   },
   title: {
     fontFamily: 'Roboto, sans-serif',
-    paddingBottom: '0',
+    paddingBottom: '0.5rem',
   },
   row: {
-    width: '300px',
+    width: '20rem',
   }
 }));
 

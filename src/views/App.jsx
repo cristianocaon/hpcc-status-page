@@ -12,11 +12,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     fontFamily: 'Roboto',
-    margin: '10px',
+    margin: '1rem',
     color: '#3D6171'
   },
   icon: {
-    marginLeft: '10px',
+    marginLeft: '1rem',
     '&:hover': {
       cursor: 'pointer',
     }

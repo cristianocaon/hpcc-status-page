@@ -14,11 +14,11 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    margin: '20px',
+    margin: '1rem',
   },
   errors: {
     display: 'flex',
-    marginTop: '5px',
+    marginTop: '1rem',
     justifyContent: 'center',
     fontFamily: 'Roboto',
   }

@@ -13,26 +13,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    margin: '2em',
-    marginTop: '1em',
-    marginBottom: '1em'
+    margin: '2rem',
+    marginTop: '1rem',
+    marginBottom: '1rem'
   },
   filterContainer: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    margin: '20px',
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
+    margin: '1.5rem',
   },
   alert: {
     display: 'flex',
-    marginTop: '5px',
+    marginTop: '1rem',
     justifyContent: 'center',
     fontFamily: 'Roboto',
   }

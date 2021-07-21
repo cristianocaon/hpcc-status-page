@@ -13,21 +13,24 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
-    margin: '2em',
-    marginTop: '1em',
-    marginBottom: '1em'
+    margin: '2rem',
+    marginTop: '1rem',
+    marginBottom: '1rem'
   },
   filterContainer: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    margin: '10px',
+    margin: '1rem',
   },
   title: {
     display: 'flex',
     justifyContent: 'center',
     fontFamily: 'Roboto',
-    margin: '20px',
+    margin: '1.5rem',
+  },
+  divider: {
+    margin: '1.5rem',
   },
   error: {
     display: 'flex',
@@ -45,6 +48,7 @@ const Summary = () => {
   const [data, setData] = useState({})
   const [error, setError] = useState(null)
   const [partitionFields, setPartitionFields] = useState([]);
+  const [chartData, setChartData] = useState();
 
   const handlePartitionSelection = (event) => {
     setPartition(event.target.innerText);
@@ -70,13 +74,17 @@ const Summary = () => {
     partitionItems.shift();
   }, [partitionFields]);
 
+  useEffect(() => {
+    setChartData(data.charts);
+  }, [data, partition])
+
   if (!error) {
     if (loading) return <Loading />
     return (
       <>
         <h2 className={classes.title}>Partition Status</h2>
         <Availability partitions={data.partitions} />
-        <Divider />
+        <Divider className={classes.divider} />
         <div className={classes.filterContainer}>
           <Filter title="Partition"
             partitions={partitionFields}
@@ -85,11 +93,11 @@ const Summary = () => {
         </div>
         {partition !== 'All'
           ? <><h2 className={classes.title}>{partition}</h2>
-            <Charts data={data.charts[partition.toLowerCase()]} /></>
+            <Charts data={chartData} partition={partition} /></>
           : <>{partitionItems.filter(el => { return el !== 'All' }).map(ptt => {
             return <>
               <h2 className={classes.title}>{ptt.charAt(0).toUpperCase() + ptt.slice(1)}</h2>
-              <Charts data={data.charts[ptt.toLowerCase()]} />
+              <Charts data={chartData} partition={ptt.toLowerCase()} />
             </>
           })}</>
         }

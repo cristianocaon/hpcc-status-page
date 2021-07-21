@@ -14,23 +14,23 @@ const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
-    marginBottom: '10px',
+    marginBottom: '1rem',
   },
   box: {
     border: '2px solid black',
     borderRadius: '3px',
     margin: '2px',
-    marginLeft: '10px',
-    marginRight: '10px',
+    marginLeft: '1rem',
+    marginRight: '1rem',
     padding: '6px',
     color: 'white',
     '&:hover': {
       opacity: '0.7',
-      transition: 'opacity .4s ease-out',
+      transition: 'opacity .3s ease-out',
     }
   },
   paper: {
-    padding: '10px',
+    padding: '1rem',
   },
 }));
 
