@@ -23,6 +23,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     margin: '1.5rem',
   },
+  table: {
+    '& .super-app-theme--header': {
+      backgroundColor: 'rgba(153, 193, 222, 0.7)',
+    },
+    '& .MuiDataGrid-row.Mui-even:not(:hover)': {
+      backgroundColor: 'rgba(188, 212, 230, 0.3)'
+    }
+  },
   alert: {
     display: 'flex',
     marginTop: '1rem',
@@ -73,6 +81,7 @@ const Jobs = () => {
         return ({
           field: column,
           headerName: header,
+          headerClassName: 'super-app-theme--header',
           width: width,
         });
       });
@@ -104,15 +113,17 @@ const Jobs = () => {
             <Filter title="Status"
               onClick={handleStatusSelection} />
           </div>
-          <DataGrid
-            rows={rows}
-            columns={fields}
-            pageSize={50}
-            autoHeight={true}
-            disableColumnMenu={true}
-            disableSelectionOnClick={true}
-            rowsPerPageOptions={[]}
-          />
+          <div className={classes.table}>
+            <DataGrid
+              rows={rows}
+              columns={fields}
+              pageSize={50}
+              autoHeight={true}
+              disableColumnMenu={true}
+              disableSelectionOnClick={true}
+              rowsPerPageOptions={[]}
+            />
+          </div>
         </div>
       </div>
     );
