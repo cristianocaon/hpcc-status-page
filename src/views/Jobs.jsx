@@ -44,11 +44,11 @@ const Jobs = () => {
   const [rows, setRows] = useState();
 
   const handlePartitionSelection = (event) => {
-    setPartition(event.target.innerText);
+    setPartition(event.target.innerText.replace(/\n/ig, ''));
   }
 
   const handleStatusSelection = (event) => {
-    setStatus(event.target.innerText);
+    setStatus(event.target.innerText.replace(/\n/ig, ''));
   }
 
   useEffect(() => {

@@ -51,7 +51,7 @@ const Summary = () => {
   const [chartData, setChartData] = useState();
 
   const handlePartitionSelection = (event) => {
-    setPartition(event.target.innerText);
+    setPartition(event.target.innerText.replace(/\n/ig, ''));
   }
 
   useEffect(() => {

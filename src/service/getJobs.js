@@ -4,12 +4,19 @@ const PROTO = 'http://';
 const ADDR = 'scarlet.hpcc.ttu.edu';
 const PORT = '80';
 
+const STATES = { Running: 'R', Pending: 'PD', Completing: 'CG' };
+
 const getJobs = async (setData, setLoading, setError, partition, status) => {
   let URL = PROTO + ADDR + ':' + PORT + '/slurm-web/jobs';
   try {
-    if (partition && status) URL += '?partition=' + partition + '&status=' + status;
-    else if (partition) URL += '?partition=' + partition;
-    else if (status) URL += '?status=' + status;
+    if (partition && partition !== 'All') {
+      URL += '?partition=' + partition.toLowerCase();
+      if (status in STATES) {
+        URL += '&status=' + STATES[status];
+      }
+    } else if (status in STATES) {
+      URL += '?status=' + STATES[status];
+    }
     const { data } = await axios.get(URL);
     if (!data.error) {
       setData(data.jobs);
@@ -18,7 +25,7 @@ const getJobs = async (setData, setLoading, setError, partition, status) => {
     }
     setLoading(false);
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
   }
 };
 

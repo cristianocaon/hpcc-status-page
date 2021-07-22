@@ -33,7 +33,7 @@ const Nodes = () => {
   const [page, setPage] = useState(1);
 
   const handlePartitionSelection = (event) => {
-    setPartition(event.target.innerText);
+    setPartition(event.target.innerText.replace(/\n/ig, ''));
     setPage(1);
   }
 

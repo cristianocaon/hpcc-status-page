@@ -8,7 +8,7 @@ const getNodes = async (setData, setLoading, setError, partition) => {
   let URL = PROTO + ADDR + ':' + PORT + '/slurm-web/nodes';
 
   try {
-    if (partition !== 'All') {
+    if (partition && partition !== 'All') {
       URL += '?partition=' + partition.toLowerCase();
     }
     const { data } = await axios.get(URL)
