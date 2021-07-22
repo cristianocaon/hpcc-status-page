@@ -111,6 +111,7 @@ const Jobs = () => {
             autoHeight={true}
             disableColumnMenu={true}
             disableSelectionOnClick={true}
+            rowsPerPageOptions={[]}
           />
         </div>
       </div>
