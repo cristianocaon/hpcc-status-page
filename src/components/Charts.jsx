@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
     margin: '1rem',
   },
   card: {
-    margin: '0.5rem',
+    width: '25rem',
+    margin: '1rem',
   },
   error: {
     margin: '5rem',
