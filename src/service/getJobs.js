@@ -1,23 +1,25 @@
 import axios from 'axios'
 
 const PROTO = 'http://';
-const ADDR = 'scarlet.hpcc.ttu.edu';
+const ADDR = 'cluster.hpcc.ttu.edu';
 const PORT = '80';
+const PAGE = '/slurm-web';
 
 const STATES = { Running: 'R', Pending: 'PD', Completing: 'CG' };
 
 const getJobs = async (setData, setLoading, setError, partition, status) => {
-  let URL = PROTO + ADDR + ':' + PORT + '/slurm-web/jobs';
+  let url = PROTO + ADDR + ':' + PORT + PAGE + '/jobs';
+
   try {
     if (partition && partition !== 'All') {
-      URL += '?partition=' + partition.toLowerCase();
+      url += '?partition=' + partition.toLowerCase();
       if (status in STATES) {
-        URL += '&status=' + STATES[status];
+        url += '&status=' + STATES[status];
       }
     } else if (status in STATES) {
-      URL += '?status=' + STATES[status];
+      url += '?status=' + STATES[status];
     }
-    const { data } = await axios.get(URL);
+    const { data } = await axios.get(url);
     if (!data.error) {
       setData(data.jobs);
     } else {

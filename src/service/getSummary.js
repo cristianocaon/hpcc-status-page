@@ -1,13 +1,15 @@
 import axios from 'axios'
 
 const PROTO = 'http://';
-const ADDR = 'scarlet.hpcc.ttu.edu';
+const ADDR = 'cluster.hpcc.ttu.edu';
 const PORT = '80';
-const URL = PROTO + ADDR + ':' + PORT + '/slurm-web/summary';
+const PAGE = '/slurm-web';
 
 const getSummary = async (setData, setLoading, setError) => {
+  let url = PROTO + ADDR + ':' + PORT + PAGE + '/summary';
+
   try {
-    const { data } = await axios.get(URL)
+    const { data } = await axios.get(url)
     if (!data.error) {
       let { charts, partitions } = data;
       setData({ charts, partitions });
