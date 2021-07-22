@@ -1,7 +1,7 @@
 const colors = {
-  usage: ['#2A4D14', '#FFD60A', '#393E41'],
-  job: ['#FFD60A', '#2A4D14', '#613DC1', '#393E41'],
-  node: ['#2A4D14', '#8EF9F3', '#613DC1', '#4E148C', '#FF1B1C', '#FFD60A', '#29BF12', '#393E41'],
+  usage: ['#2d6a4f', '#ffd166', '#393E41'],
+  job: ['#ffd166', '#2d6a4f', '#9d4edd', '#393E41'],
+  node: ['#2d6a4f', '#168aad', '#9d4edd', '#7b2cbf', '#ef233c', '#ffd166', '#52b788', '#393E41'],
 }
 
 const chartConfig = (type, labels, values) => {
