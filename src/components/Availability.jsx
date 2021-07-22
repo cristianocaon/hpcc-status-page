@@ -50,7 +50,7 @@ const Availability = ({ partitions }) => {
             <Button
               className={classes.box}
               {...bindHover(popupState)}
-              style={{ backgroundColor: partitions[partition] === 'UP' ? 'green' : 'red' }}
+              style={{ backgroundColor: partitions[partition] === 'UP' ? '#38b000' : '#ef233c' }}
               disableRipple>
               <Typography>{partition}</Typography>
             </Button>
