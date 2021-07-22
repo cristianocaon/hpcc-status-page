@@ -36,13 +36,13 @@ const useStyles = makeStyles({
 
 const NodeCell = ({ children, info, colSpan }) => {
   const generateStateColor = (status) => {
-    if (status === 'allocated') return '#2A4D14';
-    else if (status === 'idle') return '#8EF9F3';
-    else if (status === 'drained') return '#613DC1';
-    else if (status === 'draining') return '#4E148C';
-    else if (status === 'down*') return '#FF1B1C';
-    else if (status === 'reserved') return '#FFD60A';
-    else if (status === 'mixed') return '#29BF12';
+    if (status === 'allocated') return '#2d6a4f';
+    else if (status === 'idle') return '#168aad';
+    else if (status === 'drained') return '#9d4edd';
+    else if (status === 'draining') return '#7b2cbf';
+    else if (status === 'down*') return '#ef233c';
+    else if (status === 'reserved') return '#ffd166';
+    else if (status === 'mixed') return '#52b788';
     else if (status === 'empty') return '#E7E5DF';
     else return '#393E41';
   }
