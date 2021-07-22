@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 const NodeCell = ({ children, info, colSpan }) => {
   const generateStateColor = (status) => {
     if (status === 'allocated') return '#2d6a4f';
-    else if (status === 'idle') return '#168aad';
+    else if (status === 'idle') return '#a9def9';
     else if (status === 'drained') return '#9d4edd';
     else if (status === 'draining') return '#7b2cbf';
     else if (status === 'down*') return '#ef233c';
