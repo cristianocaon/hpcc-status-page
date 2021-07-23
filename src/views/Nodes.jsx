@@ -6,8 +6,8 @@ import Loading from '../components/Loading';
 import { makeStyles } from '@material-ui/core/styles';
 import { Alert, AlertTitle } from '@material-ui/lab';
 
-import { partitionItems } from '../views/Summary';
 import getNodes from '../service/getNodes';
+import { partitionItems } from '../views/Summary';
 
 const useStyles = makeStyles(() => ({
   filterContainer: {

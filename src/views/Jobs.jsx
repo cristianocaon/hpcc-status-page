@@ -5,8 +5,8 @@ import { DataGrid } from '@material-ui/data-grid';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { partitionItems } from '../views/Summary';
 import getJobs from '../service/getJobs';
+import { partitionItems } from '../views/Summary';
 
 const useStyles = makeStyles((theme) => ({
   root: {

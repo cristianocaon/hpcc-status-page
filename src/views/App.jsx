@@ -36,6 +36,7 @@ const App = () => {
     event.preventDefault();
     window.location.reload();
   }
+
   return (
     <div className="App">
       <label className={classes.info}>Refreshing automatically every 2 minutes
