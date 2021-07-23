@@ -1,10 +1,10 @@
-import PieChart from './PieChart';
+import PieChart from '../PieChart';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-import chartConfig from '../util/chartConfig';
-import parseSummaryData from '../util/parseSummaryData';
+import chartConfig from '../../util/chartConfig';
+import parseSummaryData from '../../util/parseSummaryData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Charts = ({ data, partition }) => {
+const ChartContainer = ({ data, partition }) => {
   const classes = useStyles();
 
   let temp = partition.toLowerCase();
@@ -59,4 +59,4 @@ const Charts = ({ data, partition }) => {
   );
 }
 
-export default Charts;
+export default ChartContainer;

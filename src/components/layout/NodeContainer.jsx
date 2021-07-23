@@ -1,4 +1,4 @@
-import NodeTable from './NodeTable';
+import NodeTable from '../NodeTable';
 import Paper from '@material-ui/core/Paper';
 import Pagination from '@material-ui/lab/Pagination';
 import { makeStyles } from '@material-ui/core/styles';
@@ -26,7 +26,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const TableContainer = ({ data, page, handlePage }) => {
+const NodeContainer = ({ data, page, handlePage }) => {
   const classes = useStyles();
 
   let rackNums = Object.keys(data).sort((a, b) => {
@@ -69,4 +69,4 @@ const TableContainer = ({ data, page, handlePage }) => {
   )
 }
 
-export default TableContainer
+export default NodeContainer

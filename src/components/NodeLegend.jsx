@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Legend = () => {
+const NodeLegend = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -38,4 +38,4 @@ const Legend = () => {
   )
 }
 
-export default Legend
+export default NodeLegend

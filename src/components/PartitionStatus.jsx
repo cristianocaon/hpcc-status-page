@@ -34,7 +34,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Availability = ({ partitions }) => {
+const PartitionStatus = ({ partitions }) => {
   const classes = useStyles();
 
   const popupState = usePopupState({
@@ -66,4 +66,4 @@ const Availability = ({ partitions }) => {
   )
 }
 
-export default Availability
+export default PartitionStatus

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Filter from '../components/Filter'
-import Charts from '../components/Charts';
-import Availability from '../components/Availability';
+import ChartContainer from '../components/layout/ChartContainer';
+import PartitionStatus from '../components/PartitionStatus';
 import Loading from '../components/Loading';
 import Divider from '@material-ui/core/Divider';
 import { Alert, AlertTitle } from '@material-ui/lab';
@@ -83,7 +83,7 @@ const Summary = () => {
     return (
       <>
         <h2 className={classes.title}>Partition Status</h2>
-        <Availability partitions={data.partitions} />
+        <PartitionStatus partitions={data.partitions} />
         <Divider className={classes.divider} />
         <div className={classes.filterContainer}>
           <Filter title="Partition"
@@ -93,11 +93,11 @@ const Summary = () => {
         </div>
         {partition !== 'All'
           ? <><h2 className={classes.title}>{partition}</h2>
-            <Charts data={chartData} partition={partition} /></>
+            <ChartContainer data={chartData} partition={partition} /></>
           : <>{partitionItems.filter(el => { return el !== 'All' }).map(ptt => {
             return <>
               <h2 className={classes.title}>{ptt.charAt(0).toUpperCase() + ptt.slice(1)}</h2>
-              <Charts data={chartData} partition={ptt.toLowerCase()} />
+              <ChartContainer data={chartData} partition={ptt.toLowerCase()} />
             </>
           })}</>
         }

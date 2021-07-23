@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import Legend from '../components/Legend';
+import NodeLegend from '../components/NodeLegend';
 import Filter from '../components/Filter';
-import TableContainer from '../components/TableContainer';
+import NodeContainer from '../components/layout/NodeContainer';
 import Loading from '../components/Loading';
 import { makeStyles } from '@material-ui/core/styles';
 import { Alert, AlertTitle } from '@material-ui/lab';
@@ -51,13 +51,13 @@ const Nodes = () => {
     if (loading) return <Loading />
     return (
       <div>
-        <Legend />
+        <NodeLegend />
         <div className={classes.filterContainer}>
           <Filter title="Partition"
             partitions={partitionItems}
             onClick={handlePartitionSelection} />
         </div>
-        <TableContainer data={data} page={page} handlePage={handlePage} />
+        <NodeContainer data={data} page={page} handlePage={handlePage} />
       </div>
     );
   } else {
