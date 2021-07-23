@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-const PROTO = 'http://';
+const PROTO = 'https://';
 const ADDR = 'cluster.hpcc.ttu.edu';
-const PORT = '80';
-const PAGE = '/slurm-web';
+const PORT = '443';
+const PAGE = '/slurm-web/summary';
 
 const getSummary = async (setData, setLoading, setError) => {
-  let url = PROTO + ADDR + ':' + PORT + PAGE + '/summary';
+  let url = PROTO + ADDR + ':' + PORT + PAGE;
 
   try {
     const { data } = await axios.get(url)

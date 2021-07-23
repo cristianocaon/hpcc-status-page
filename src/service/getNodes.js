@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-const PROTO = 'http://';
+const PROTO = 'https://';
 const ADDR = 'cluster.hpcc.ttu.edu';
-const PORT = '80';
-const PAGE = '/slurm-web';
+const PORT = '443';
+const PAGE = '/slurm-web/nodes';
 
 const getNodes = async (setData, setLoading, setError, partition) => {
-  let url = PROTO + ADDR + ':' + PORT + PAGE + '/nodes';
+  let url = PROTO + ADDR + ':' + PORT + PAGE;
 
   try {
     if (partition && partition !== 'All') {
