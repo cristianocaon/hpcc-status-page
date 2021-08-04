@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#3D6171'
   },
   icon: {
-    marginLeft: '1rem',
+    marginLeft: '0.3rem',
     '&:hover': {
       cursor: 'pointer',
     }
@@ -39,9 +39,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <label className={classes.info}>Refreshing automatically every 2 minutes
+      <div className={classes.info}>
+        <label>Refreshing automatically every 2 minutes</label>
         <IconButton size="small" onClick={handleRefresh} className={classes.icon}><FontAwesomeIcon icon={faSync} /></IconButton>
-      </label>
+      </div>
       <Header value={value} handleChange={handleChange} />
       <Content value={value} />
     </div>
