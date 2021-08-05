@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Filter from '../components/Filter';
 import Loading from '../components/Loading';
-import { DataGrid } from '@material-ui/data-grid';
+import { DataGrid, GridToolbar } from '@material-ui/data-grid';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -122,6 +122,9 @@ const Jobs = () => {
               disableColumnMenu={true}
               disableSelectionOnClick={true}
               rowsPerPageOptions={[]}
+              components={{
+                Toolbar: GridToolbar,
+              }}
             />
           </div>
         </div>
