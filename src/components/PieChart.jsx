@@ -45,8 +45,8 @@ const PieChart = ({ data, isUsage }) => {
                   let label = tooltipItem.label;
                   let value = tooltipItem.dataset.data[tooltipItem.dataIndex];
                   if (isUsage) {
-                    if (label === "Utilized") label = "CPU Usage"
-                    else if (label === "Idle") label = "CPU Idle"
+                    if (label === "CPU Allocation") label = "CPU Allocation"
+                    else if (label === "CPU Idle") label = "CPU Idle"
                   }
                   return label + ": " + value;
                 }

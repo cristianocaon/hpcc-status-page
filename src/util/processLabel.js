@@ -3,8 +3,8 @@ const processLabel = (label) => {
   else if (label === 'OT') return 'Other';
   else if (label === 'PD') return 'Pending';
   else if (label === 'R') return 'Running';
-  else if (label === 'alloc_cpu') return 'Utilized';
-  else if (label === 'idle_cpu') return 'Idle';
+  else if (label === 'alloc_cpu') return 'CPU Allocation'
+  else if (label === 'idle_cpu') return 'CPU Idle';
   else if (label === 'other_cpu') return 'Other';
   else if (label === 'allocated') return 'Fully Allocated';
   else if (label === 'mixed') return 'Partially Allocated';

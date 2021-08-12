@@ -44,7 +44,7 @@ const ChartContainer = ({ data, partition }) => {
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
-        <label className={classes.title}><strong>Cluster Utilization</strong></label>
+        <label className={classes.title}><strong>Cluster Allocation</strong></label>
         {usageValues.reduce((a, b) => a + b) !== 0 ? <PieChart data={usageConfig} isUsage={true} /> : <Typography className={classes.error}>No utilization information available</Typography>}
       </Card>
       <Card className={classes.card}>
