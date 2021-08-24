@@ -16,7 +16,7 @@ const Header = ({ value, handleChange }) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ background: '#0a100d', color: '#edf2f4' }}>
         <Tabs value={value} onChange={handleChange} centered>
           <Tab label="Summary" />
           <Tab label="Jobs" />
